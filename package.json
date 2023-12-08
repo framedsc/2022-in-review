@@ -1,12 +1,15 @@
 {
   "name": "framed-year-in-review",
+  "homepage": "framedsc.com/2022-year-in-review",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "deploy": "gh-pages -d build",
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@next/font": "13.1.1",
