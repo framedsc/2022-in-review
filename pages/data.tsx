@@ -59,16 +59,13 @@ const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
 export default function Home() {
   const [visible, setVisible] = useState(false);
   const [calendarDatum, setCalendarDatum] = useState<CalendarTooltipProps>();
-
-  const [hofData, setHofData] = useState({ imageData: [], authorData: [] });
-  const [sysData, setSysData] = useState([]);
   const [data, setData] = useState({sys: [], hof: [], authors: []});
   const [initialized, setInitialized] = useState(false);
 
   const getData = async () => {
-    const imagesResponse = await getHofImages({});
-    const authorsResponse = await getHofAuthors({});
-    const sysResponse = await getSysImages({});
+    const imagesResponse = await getHofImages();
+    const authorsResponse = await getHofAuthors();
+    const sysResponse = await getSysImages();
     const normalizedSysImages = normalizeData(sysResponse.data);
     const systImagesList = Object.values(normalizedSysImages[0]);
     // drop the _default entry
@@ -111,7 +108,7 @@ export default function Home() {
   };
 
   data.hof.forEach(item => item as IShot);
-  sysData.forEach(item => item as IShot);
+  data.sys.forEach(item => item as IShot);
 
   if (!dataAvailable) {
     return <LoadingSection />;
