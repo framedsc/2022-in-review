@@ -59,7 +59,7 @@ const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
 export default function Home() {
   const [visible, setVisible] = useState(false);
   const [calendarDatum, setCalendarDatum] = useState<CalendarTooltipProps>();
-  const [data, setData] = useState({sys: [], hof: [], authors: []});
+  const [data, setData] = useState({sys: new Array<IShot>(), hof: new Array<IShot>(), authors: new Array<object>()});
   const [initialized, setInitialized] = useState(false);
 
   const getData = async () => {
@@ -67,7 +67,7 @@ export default function Home() {
     const authorsResponse = await getHofAuthors();
     const sysResponse = await getSysImages();
     const normalizedSysImages = normalizeData(sysResponse.data);
-    const systImagesList = Object.values(normalizedSysImages[0]);
+    const systImagesList = Object.values(normalizedSysImages[0]) as IShot[];
     // drop the _default entry
     systImagesList.pop();
     const normalizedImages = normalizeData(imagesResponse.data._default);
@@ -77,7 +77,7 @@ export default function Home() {
     //startofyear 2022 = 1640995200
     //startofyear 2023 = 1672534800
     //endofyear 2023 = 1704070800
-    const yearImages = formattedImages.filter((item) => item.epochTime > 1640995200 && item.epochTime < 1672534800);
+    const yearImages = formattedImages.filter((item: { epochTime: number; }) => item.epochTime > 1640995200 && item.epochTime < 1672534800);
 
     setData({ sys: systImagesList, hof: yearImages, authors: normalizedAuthors});
   };

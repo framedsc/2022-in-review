@@ -44,7 +44,7 @@ const query = /* GraphQL */ `
   `;
 
 const Home = () => {
-  const [data, setData] = useState({sys: [], hof: [], authors: []});
+  const [data, setData] = useState({sys: new Array<IShot>(), hof: new Array<IShot>(), authors: new Array<object>()});
   const [initialized, setInitialized] = useState(false);
   const imgSrc = useRef<string>("");
 
@@ -53,7 +53,7 @@ const Home = () => {
     const authorsResponse = await getHofAuthors();
     const sysResponse = await getSysImages();
     const normalizedSysImages = normalizeData(sysResponse.data);
-    const systImagesList = Object.values(normalizedSysImages[0]);
+    const systImagesList = Object.values(normalizedSysImages[0]) as IShot[];
     // drop the _default entry
     systImagesList.pop();
     const normalizedImages = normalizeData(imagesResponse.data._default);
@@ -63,7 +63,7 @@ const Home = () => {
     //startofyear 2022 = 1640995200
     //startofyear 2023 = 1672534800
     //endofyear 2023 = 1704070800
-    const yearImages = formattedImages.filter((item) => item.epochTime > 1640995200 && item.epochTime < 1672534800);
+    const yearImages = formattedImages.filter((item: { epochTime: number; }) => item.epochTime > 1640995200 && item.epochTime < 1672534800);
 
     setData({ sys: systImagesList, hof: yearImages, authors: normalizedAuthors});
   };
@@ -80,11 +80,9 @@ const Home = () => {
     }
   },)
 
-  console.log(data);
-
   const dataAvailable = data.hof.length > 0 && data.authors.length > 0;
   
-  if (dataAvailable) {
+  if (!dataAvailable) {
     return <LoadingSection />;
   }
 
@@ -98,8 +96,8 @@ const Home = () => {
     return <ErrorNoData />;
   }
 
-  if (!imgSrc.current) {
-    imgSrc.current = data.hof[Math.floor(Math.random() * data.hof.length - 1)] ?? "";
+  if (!imgSrc.current && dataAvailable) {
+    imgSrc.current = data.hof[Math.floor(Math.random() * data.hof.length - 1)].shotUrl ?? "";
   }
 
   return (

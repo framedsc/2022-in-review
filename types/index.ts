@@ -2,12 +2,14 @@ export interface IShot {
   gameName: string;
   height?: number;
   width?: number;
-  authorNick: string;
-  authorId: number;
+  author?: string;
+  //authorNick: string;
+  //authorId: number;
   date: string;
   score?: number;
   colorName?: string;
   orientation?: string;
   aspectRatio?: string;
-  attachments?: string;
+  thumbnailUrl?: string;
+  shotUrl?: string;
 }
