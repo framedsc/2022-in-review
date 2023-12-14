@@ -139,7 +139,7 @@ const baseSearchData = {
     return array;
   }
   
-  export const scrolledToBottom = (el, buffer: number) => {
+  export const scrolledToBottom = (el: { getBoundingClientRect: () => { (): any; new(): any; bottom: number; }; }, buffer: number) => {
     return (el.getBoundingClientRect().bottom - buffer) <= window.innerHeight;
   }
   
@@ -163,11 +163,11 @@ const baseSearchData = {
   }
   
   // add some properties to the image data that we'll need later
-  export const addProperties = (images, authors) => {
+  export const addProperties = (images: any[], authors: any[]) => {
     for (let i = 0; i < images.length; i++) {
       images[i].authorid = images[i].author;
       const authorName = authors.find(
-        (author) => author.authorid === images[i].authorid,
+        (author: { authorid: any; }) => author.authorid === images[i].authorid,
       ).authorNick;
       images[i].author = authorName;
       images[i].game = images[i].gameName;
@@ -192,7 +192,7 @@ const baseSearchData = {
     }
   }
   
-  export const extractTopLevelDomain = (url) => {
+  export const extractTopLevelDomain = (url: string[]) => {
     if (!url.indexOf('//')) {
       return url;
     }
@@ -206,7 +206,7 @@ const baseSearchData = {
     return newURL.slice(0, end);
   }
   
-  export const getQueryParam = (param) => {
+  export const getQueryParam = (param: string) => {
     const search = window.location.search;
     const params = new URLSearchParams(search);
   
@@ -214,20 +214,20 @@ const baseSearchData = {
   }
   
   // get a min and max for a number property in the data
-  const getRange = (key, data) => {
+  const getRange = (key: number, data: any[]) => {
     if (!data.length) {
       return [0,0];
     }
-    const sortMethod = (a, b) => (a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0);
+    const sortMethod = (a: { [x: string]: number; }, b: { [x: string]: number; }) => (a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0);
     const sortedData = data.sort(sortMethod);
     return [sortedData[0][key], sortedData[data.length-1][key]];
   }
   
   // fill in auto complete data for potential search keys
-  export const generateSearchData = (data) => {
+  export const generateSearchData = (data: any[]) => {
     const searchData = Object.assign(baseSearchData);
     const imageData = data.slice();
-    const searchWithEntries = searchData.searchOptions.filter((item) => {
+    const searchWithEntries = searchData.searchOptions.filter((item: { hasOwnProperty: (arg0: string) => any; }) => {
       return item.hasOwnProperty('entries')
     })
   
@@ -261,23 +261,23 @@ const baseSearchData = {
     return (searchData);
   }
   
-  export const getSearchKey = (searchOption) => {
+  export const getSearchKey = (searchOption: string) => {
     const index = baseSearchData.searchOptions.findIndex(e => e.label === searchOption);
     const found = index > -1;
     return found ? baseSearchData.searchOptions[index].property : false;
   }
   
-  export const getOperator = (searchOption) => {
+  export const getOperator = (searchOption: string) => {
     const index = baseSearchData.searchOptions.findIndex(e => e.label === searchOption);
     const searchItem = baseSearchData.searchOptions[index];
     return searchItem?.operator;
   }
   
-  export const getSearchDataByType = (type) => {
+  export const getSearchDataByType = (type: string) => {
     const itemsByType = baseSearchData.searchOptions.filter((item) => item.type === type);
     return itemsByType.map(item => item.property);
   }
-  export function arrayUnique(array) {
+  export function arrayUnique(array: any[]) {
     var a = array.concat();
     for(var i=0; i<a.length; ++i) {
         for(var j=i+1; j<a.length; ++j) {
