@@ -1,33 +1,24 @@
 import { IShot } from "@types";
+import React, { useRef, useEffect, useState, RefObject } from "react";
 import Head from "next/head";
 import { CalendarTooltipProps } from "@nivo/calendar";
-import { useState, useRef, RefObject } from "react";
 import { calendarDataFormat, gameDistPie } from "@util";
 import { Calendar, Pie } from "@components/charts";
 import { Container, LoadWrapper, Modal } from "@components/global";
-import useSWR from "swr";
 import {
   ErrorNoData,
   ErrorSection,
   LoadingSection,
 } from "@components/experience-fragments";
 
+import { getHofAuthors, getHofImages, getSysImages } from './api/request';
+import { addProperties, normalizeData } from './utils/utils';
+
 interface CalendarPieTooltip extends CalendarTooltipProps {
   data: {
     shots: IShot[];
   };
 }
-
-const fetcher = (query: string) =>
-  fetch(`/api/graphql`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({ query }),
-  })
-    .then((res) => res.json())
-    .then((json) => json.data);
 
 const CustomTooltip = (data: CalendarTooltipProps) => {
   return (
@@ -69,6 +60,45 @@ export default function Home() {
   const [visible, setVisible] = useState(false);
   const [calendarDatum, setCalendarDatum] = useState<CalendarTooltipProps>();
 
+  const [hofData, setHofData] = useState({ imageData: [], authorData: [] });
+  const [sysData, setSysData] = useState([]);
+  const [data, setData] = useState({sys: [], hof: [], authors: []});
+  const [initialized, setInitialized] = useState(false);
+
+  const getData = async () => {
+    const imagesResponse = await getHofImages({});
+    const authorsResponse = await getHofAuthors({});
+    const sysResponse = await getSysImages({});
+    const normalizedSysImages = normalizeData(sysResponse.data);
+    const systImagesList = Object.values(normalizedSysImages[0]);
+    // drop the _default entry
+    systImagesList.pop();
+    const normalizedImages = normalizeData(imagesResponse.data._default);
+    const normalizedAuthors = normalizeData(authorsResponse.data._default);
+    const formattedImages = addProperties(normalizedImages, normalizedAuthors);
+
+    //startofyear 2022 = 1640995200
+    //startofyear 2023 = 1672534800
+    //endofyear 2023 = 1704070800
+    const yearImages = formattedImages.filter((item) => item.epochTime > 1640995200 && item.epochTime < 1672534800);
+
+    setData({ sys: systImagesList, hof: yearImages, authors: normalizedAuthors});
+  };
+
+  useEffect(() => {
+    if (!initialized) {
+      setInitialized(true);
+      // you can't have an async useEffect, so usually people create an async function and call it right after
+      const getDataAsync = async () => {
+        // awaiting for getData to finish
+        await getData();
+      }
+      getDataAsync();
+    }
+  },)
+
+  const dataAvailable = data.hof.length > 0 && data.authors.length > 0;
+
   const segments: {
     [key: string]: RefObject<HTMLDivElement>;
   } = {
@@ -80,91 +110,66 @@ export default function Home() {
     "Daily Share Your Shot": useRef<HTMLDivElement>(null),
   };
 
-  const { data, error, isLoading } = useSWR<{
-    sys: IShot[];
-    hof: IShot[];
-  }>(
-    /* GraphQL */ `
-      query {
-        sys: shots(
-          startDate: "2022-01-01"
-          endDate: "2022-12-31"
-          type: "sys"
-          format: "calendar"
-        ) {
-          attachments
-          authorNick
-          gameName
-          date
-        }
+  data.hof.forEach(item => item as IShot);
+  sysData.forEach(item => item as IShot);
 
-        hof: shots(
-          startDate: "2022-01-01"
-          endDate: "2022-12-31"
-          type: "hof"
-          format: "calendar"
-        ) {
-          authorNick
-          gameName
-          date
-        }
-      }
-    `,
-    fetcher,
-  );
-
-  if (isLoading) {
+  if (!dataAvailable) {
     return <LoadingSection />;
   }
 
+  /*
   if (error) {
     return <ErrorSection message={error.message} />;
   }
+  */
 
   if (!data) {
     return <ErrorNoData />;
   }
 
   const grid: IShot[] = Array.from(Array(9).keys()).map(() => {
-    const randIdx = Math.floor(Math.random() * data.sys.length - 1);
-    return data.sys[randIdx];
+    const randIdx = Math.floor(Math.random() * data.hof.length - 1);
+    return data.hof[randIdx];
   });
 
   const categoriesImages: IShot[] = Array.from(Array(3).keys()).map(() => {
-    const randIdx = Math.floor(Math.random() * data.sys.length - 1);
-    return data.sys[randIdx];
+    const randIdx = Math.floor(Math.random() * data.hof.length - 1);
+    return data.hof[randIdx];
   });
 
   const top10sys = gameDistPie(data.sys, 11)
     .map((item) => {
-      const gameList = data.sys.filter(
-        (shot) => shot.gameName === item.label && !!shot.attachments,
+      // get shots from this game
+      const shotsFromGame = data.hof.filter(
+        (shot) => shot.gameName === item.label,
       );
-      const randIdx = Math.floor(Math.random() * gameList.length - 1);
-      return { ...gameList[randIdx], ...item };
+      const randIdx = Math.floor(Math.random() * shotsFromGame.length - 1);
+      // pick random shot for game
+      return { ...shotsFromGame[randIdx], ...item };
     })
-    .filter((item) => !!item.attachments);
+    .filter((item) => !!item.thumbnailUrl);
 
   const mostActiveSys = gameDistPie(
     calendarDataFormat(data.sys).sort((a, b) => b.value - a.value)[0].shots,
     11,
   ).map((item) => {
-    const gameList = data.sys.filter(
-      (shot) => shot.gameName === item.label && !!shot.attachments,
+    const gameList = data.hof.filter(
+      (shot) => shot.gameName === item.label && !!shot.thumbnailUrl,
     );
     const randIdx = Math.floor(Math.random() * gameList.length - 1);
     if (!gameList[randIdx]) {
       return { ...gameList[0], ...item };
     }
     return { ...gameList[randIdx], ...item };
-  });
+  })
+  .filter((item) => !!item.thumbnailUrl);
 
   const mostActiveHof = gameDistPie(
     calendarDataFormat(data.hof).sort((a, b) => b.value - a.value)[0].shots,
     11,
   ).map((item) => {
-    const gameList = data.sys.filter(
-      (shot) => shot.gameName === item.label && !!shot.attachments,
+    const gameList = data.hof.filter(
+      (shot) => shot.gameName === item.label && !!shot.thumbnailUrl,
     );
     const randIdx = Math.floor(Math.random() * gameList.length - 1);
     if (!gameList[randIdx]) {
@@ -175,13 +180,13 @@ export default function Home() {
 
   const top10hof = gameDistPie(data.hof, 11)
     .map((item) => {
-      const gameList = data.sys.filter(
-        (shot) => shot.gameName === item.label && !!shot.attachments,
+      const gameList = data.hof.filter(
+        (shot) => shot.gameName === item.label && !!shot.thumbnailUrl,
       );
       const randIdx = Math.floor(Math.random() * gameList.length - 1);
       return { ...gameList[randIdx], ...item };
     })
-    .filter((item) => !!item.attachments);
+    .filter((item) => !!item.thumbnailUrl);
 
   return (
     <>
@@ -220,7 +225,7 @@ export default function Home() {
                       {grid.map((item, index) => {
                         return (
                           <div
-                            key={`${item.authorId}-${index}`}
+                            key={`${item.author}-${index}`}
                             className="relative aspect-square"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-0 translate-y-5 hover:opacity-100 hover:translate-y-0">
@@ -233,7 +238,7 @@ export default function Home() {
                                 {item.gameName}
                                 <br />
                                 <span className="text-white/75 text-xs">
-                                  {item.authorNick}
+                                  {item.author}
                                 </span>
                               </p>
                             </div>
@@ -242,7 +247,7 @@ export default function Home() {
                                 loading="lazy"
                                 className="load transition-all -translate-y-10 opacity-0 duration-500 rounded-md object-cover"
                                 alt={item.gameName}
-                                src={`${item.attachments?.replace(
+                                src={`${item.thumbnailUrl?.replace(
                                   "https://cdn.discordapp.com",
                                   "https://media.discordapp.net",
                                 )}?width=600&height=600`}
@@ -261,7 +266,7 @@ export default function Home() {
                     {categoriesImages.map((item, index) => {
                       return (
                         <div
-                          key={`${item.authorId}-${index}`}
+                          key={`${item.author}-${index}`}
                           className="relative aspect-auto"
                         >
                           <div className="absolute w-full h-full transition-all duration-500 opacity-0 translate-y-5 hover:opacity-100 hover:translate-y-0">
@@ -274,7 +279,7 @@ export default function Home() {
                               {item.gameName}
                               <br />
                               <span className="text-white/75 text-xs text-right">
-                                {item.authorNick}
+                                {item.author}
                               </span>
                             </p>
                           </div>
@@ -292,7 +297,7 @@ export default function Home() {
                             }
                             `}
                               alt={item.gameName}
-                              src={`${item.attachments?.replace(
+                              src={`${item.thumbnailUrl?.replace(
                                 "https://cdn.discordapp.com",
                                 "https://media.discordapp.net",
                               )}?width=600&height=600`}
@@ -373,7 +378,7 @@ export default function Home() {
                       {top10sys.map((item, index) => {
                         return (
                           <div
-                            key={`${item.authorId}-${index}`}
+                            key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
@@ -393,7 +398,7 @@ export default function Home() {
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
-                                  {item.authorNick}
+                                  {item.author}
                                 </p>
                               </div>
                             </div>
@@ -402,7 +407,7 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.attachments?.replace(
+                                src={`${item.thumbnailUrl?.replace(
                                   "https://cdn.discordapp.com",
                                   "https://media.discordapp.net",
                                 )}?width=600&height=600`}
@@ -425,7 +430,7 @@ export default function Home() {
                       {top10hof.map((item, index) => {
                         return (
                           <div
-                            key={`${item.authorId}-${index}`}
+                            key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
@@ -445,7 +450,7 @@ export default function Home() {
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
-                                  {item.authorNick}
+                                  {item.author}
                                 </p>
                               </div>
                             </div>
@@ -454,7 +459,7 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.attachments?.replace(
+                                src={`${item.thumbnailUrl?.replace(
                                   "https://cdn.discordapp.com",
                                   "https://media.discordapp.net",
                                 )}?width=600&height=600`}
@@ -561,7 +566,7 @@ export default function Home() {
                       {mostActiveSys.slice(0, 10).map((item, index) => {
                         return (
                           <div
-                            key={`${item.authorId}-${index}`}
+                            key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
@@ -581,7 +586,7 @@ export default function Home() {
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
-                                  {item.authorNick}
+                                  {item.author}
                                 </p>
                               </div>
                             </div>
@@ -590,7 +595,7 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.attachments?.replace(
+                                src={`${item.thumbnailUrl?.replace(
                                   "https://cdn.discordapp.com",
                                   "https://media.discordapp.net",
                                 )}?width=600&height=600`}
@@ -611,12 +616,12 @@ export default function Home() {
                   <div className="md:flex flex-col justify-center">
                     <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
                       {mostActiveHof.slice(0, 10).map((item, index) => {
-                        if (!item.gameName || !item.attachments) {
+                        if (!item.gameName || !item.thumbnailUrl) {
                           console.log("SHIT", mostActiveHof.slice(0, 10));
                         }
                         return (
                           <div
-                            key={`${item.authorId}-${index}`}
+                            key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
@@ -636,7 +641,7 @@ export default function Home() {
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
-                                  {item.authorNick}
+                                  {item.author}
                                 </p>
                               </div>
                             </div>
@@ -645,7 +650,7 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.attachments?.replace(
+                                src={`${item.thumbnailUrl?.replace(
                                   "https://cdn.discordapp.com",
                                   "https://media.discordapp.net",
                                 )}?width=600&height=600`}
