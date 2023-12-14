@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 
 import { getHofAuthors, getHofImages, getSysImages } from './api/request';
-import { addProperties, normalizeData } from './utils/utils';
+import { addProperties, normalizeData } from '../util/utils';
 
 const Home = () => {
   const [data, setData] = useState({sys: new Array<IShot>(), hof: new Array<IShot>(), authors: new Array<object>()});

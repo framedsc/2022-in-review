@@ -12,7 +12,7 @@ import {
 } from "@components/experience-fragments";
 
 import { getHofAuthors, getHofImages, getSysImages } from './api/request';
-import { addProperties, normalizeData } from './utils/utils';
+import { addProperties, normalizeData } from '../util/utils';
 
 interface CalendarPieTooltip extends CalendarTooltipProps {
   data: {
