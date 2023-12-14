@@ -14,35 +14,6 @@ import Link from "next/link";
 import { getHofAuthors, getHofImages, getSysImages } from './api/request';
 import { addProperties, normalizeData } from './utils/utils';
 
-const fetcher = (query: string) =>
-  fetch(`/api/graphql`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({ query }),
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      const len = json.data.shots.length;
-      const data = json.data.shots[Math.floor(Math.random() * len - 1)];
-      return data as IShot;
-    });
-const start = getDateLastYear();
-const end = getDateLastYear(true);
-
-const query = /* GraphQL */ `
-    query {
-      shots(
-        startDate: "${start.year}-${start.month}-${start.day}"
-        endDate: "${end.year}-${end.month}-${end.day}"
-        type: "sys"
-      ) {
-        attachments
-      }
-    }
-  `;
-
 const Home = () => {
   const [data, setData] = useState({sys: new Array<IShot>(), hof: new Array<IShot>(), authors: new Array<object>()});
   const [initialized, setInitialized] = useState(false);
