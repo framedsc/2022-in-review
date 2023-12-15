@@ -248,7 +248,7 @@ export default function Home() {
                             <picture>
                               <img
                                 loading="lazy"
-                                className="load transition-all -translate-y-10 opacity-0 duration-500 rounded-md object-cover"
+                                className="load transition-all -translate-y-10 opacity-0 duration-500 rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
                                 src={item.thumbnailUrl}
                               />
@@ -708,7 +708,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="calendar h-screen grid grid-rows-2 gap-x-8 overflow-scroll md:overflow-auto">
+              <div className="calendar h-screen grid grid-rows-2 gap-x-8 overflow-scroll md:overflow-hidden">
                 <div
                   className="flex flex-col items-center w-h-screen md:w-full"
                   ref={segments["Daily Share Your Shot"]}

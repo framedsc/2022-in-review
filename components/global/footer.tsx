@@ -18,7 +18,17 @@ export const Footer = () => {
       >
         Jay Pandya
       </Link>{" "}
-      © {new Date().getFullYear()} All rights reserved.
+      and&nbsp;
+      <Link
+        href="https://github.com/originalnicodr"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white border-b border-b-white border-dotted hover:border-b-transparent"
+      >
+       originalnicodr
+      </Link>{" "}
+      ©&nbsp;
+      {new Date().getFullYear()} All rights reserved.
     </footer>
   );
 };
