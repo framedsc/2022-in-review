@@ -20,6 +20,10 @@ interface CalendarPieTooltip extends CalendarTooltipProps {
   };
 }
 
+const getHOFUrl = (item: { epochTime: any; }) => {
+  return `https://framedsc.com/HallOfFramed/?imageId=${item.epochTime}`
+}
+
 const CustomTooltip = (data: CalendarTooltipProps) => {
   return (
     <div className="bg-framed-black text-white py-1 px-3 rounded-md shadow-md">
@@ -221,9 +225,11 @@ export default function Home() {
                     <div className="grid grid-cols-3 gap-4 aspect-square mt-8 md:mt-32">
                       {grid.map((item, index) => {
                         return (
-                          <div
+                          <a
                             key={`${item.author}-${index}`}
                             className="relative aspect-square"
+                            href= { getHOFUrl(item) }
+                            target="_blank"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-0 translate-y-5 hover:opacity-100 hover:translate-y-0">
                               <p
@@ -244,13 +250,10 @@ export default function Home() {
                                 loading="lazy"
                                 className="load transition-all -translate-y-10 opacity-0 duration-500 rounded-md object-cover"
                                 alt={item.gameName}
-                                src={`${item.thumbnailUrl?.replace(
-                                  "https://cdn.discordapp.com",
-                                  "https://media.discordapp.net",
-                                )}?width=600&height=600`}
+                                src={item.thumbnailUrl}
                               />
                             </picture>
-                          </div>
+                          </a>
                         );
                       })}
                     </div>
@@ -262,9 +265,11 @@ export default function Home() {
                   <div className="hidden md:grid grid-cols-3 max-h-screen">
                     {categoriesImages.map((item, index) => {
                       return (
-                        <div
+                        <a
                           key={`${item.author}-${index}`}
                           className="relative aspect-auto"
+                          href= { getHOFUrl(item) }
+                          target="_blank"
                         >
                           <div className="absolute w-full h-full transition-all duration-500 opacity-0 translate-y-5 hover:opacity-100 hover:translate-y-0">
                             <p
@@ -300,7 +305,7 @@ export default function Home() {
                               )}?width=600&height=600`}
                             />
                           </picture>
-                        </div>
+                        </a>
                       );
                     })}
                   </div>
@@ -374,12 +379,14 @@ export default function Home() {
                     <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
                       {top10sys.map((item, index) => {
                         return (
-                          <div
+                          <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
                           `}
+                            href= { getHOFUrl(item) }
+                            target="_blank"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
@@ -404,13 +411,10 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.thumbnailUrl?.replace(
-                                  "https://cdn.discordapp.com",
-                                  "https://media.discordapp.net",
-                                )}?width=600&height=600`}
+                                src={item.thumbnailUrl}
                               />
                             </picture>
-                          </div>
+                          </a>
                         );
                       })}
                     </div>
@@ -426,12 +430,14 @@ export default function Home() {
                     <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
                       {top10hof.map((item, index) => {
                         return (
-                          <div
+                          <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
                           `}
+                            href= { getHOFUrl(item) }
+                            target="_blank"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
@@ -456,13 +462,10 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.thumbnailUrl?.replace(
-                                  "https://cdn.discordapp.com",
-                                  "https://media.discordapp.net",
-                                )}?width=600&height=600`}
+                                src={item.thumbnailUrl}
                               />
                             </picture>
-                          </div>
+                          </a>
                         );
                       })}
                     </div>
@@ -562,12 +565,14 @@ export default function Home() {
                     <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
                       {mostActiveSys.slice(0, 10).map((item, index) => {
                         return (
-                          <div
+                          <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
                           `}
+                            href= { getHOFUrl(item) }
+                            target="_blank"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
@@ -592,13 +597,10 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.thumbnailUrl?.replace(
-                                  "https://cdn.discordapp.com",
-                                  "https://media.discordapp.net",
-                                )}?width=600&height=600`}
+                                src={item.thumbnailUrl}
                               />
                             </picture>
-                          </div>
+                          </a>
                         );
                       })}
                     </div>
@@ -617,12 +619,14 @@ export default function Home() {
                           console.log("SHIT", mostActiveHof.slice(0, 10));
                         }
                         return (
-                          <div
+                          <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
                             ${index === 0 ? "col-span-1 row-span-3" : ""}
                           `}
+                            href= { getHOFUrl(item) }
+                            target="_blank"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
@@ -647,13 +651,10 @@ export default function Home() {
                                 loading="lazy"
                                 className="rounded-md object-cover w-full h-full"
                                 alt={item.gameName}
-                                src={`${item.thumbnailUrl?.replace(
-                                  "https://cdn.discordapp.com",
-                                  "https://media.discordapp.net",
-                                )}?width=600&height=600`}
+                                src={item.thumbnailUrl}
                               />
                             </picture>
-                          </div>
+                          </a>
                         );
                       })}
                     </div>

@@ -5,6 +5,7 @@ export interface IShot {
   author?: string;
   //authorNick: string;
   //authorId: number;
+  epochTime: number;
   date: string;
   score?: number;
   colorName?: string;
