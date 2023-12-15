@@ -230,6 +230,7 @@ export default function Home() {
                             className="relative aspect-square"
                             href= { getHOFUrl(item) }
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-0 translate-y-5 hover:opacity-100 hover:translate-y-0">
                               <p
@@ -270,6 +271,7 @@ export default function Home() {
                           className="relative aspect-auto"
                           href= { getHOFUrl(item) }
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <div className="absolute w-full h-full transition-all duration-500 opacity-0 translate-y-5 hover:opacity-100 hover:translate-y-0">
                             <p
@@ -387,6 +389,7 @@ export default function Home() {
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
@@ -438,6 +441,7 @@ export default function Home() {
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
@@ -573,6 +577,7 @@ export default function Home() {
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
@@ -627,6 +632,7 @@ export default function Home() {
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
+                            rel="noreferrer"
                           >
                             <div className="absolute w-full h-full transition-all duration-500 opacity-100">
                               <div
