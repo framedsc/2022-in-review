@@ -2,20 +2,17 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { Container } from "./container";
+import CSS from 'csstype';
 
 export const Navigation = () => {
   const router = useRouter();
 
-  const items = [
-    {
-      title: "Home",
-      href: "/",
-    },
-    {
-      title: "Data",
-      href: "/data",
-    },
-  ];
+  const aYearofFramedStyle: CSS.Properties = {
+    fontWeight: 'bold',
+    //textAlign: 'center',
+    fontSize: '20px',
+    opacity: '90%',
+  };
 
   return (
     <nav className="w-full fixed top-0 py-3 bg-black/30 backdrop-blur-lg border-b border-b-white/10 shadow-md text-white z-50">
@@ -23,7 +20,7 @@ export const Navigation = () => {
         <ul className="flex items-center">
           <li>
             <Link
-              href="https://framedsc.com/HallOfFramed/"
+              href="https://framedsc.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -45,33 +42,9 @@ export const Navigation = () => {
               </div>
             </Link>
           </li>
-          {items.map((item, index) => (
-            <li key={index}>
-              <strong>
-                <Link
-                  className={`
-                  hover:bg-white
-                  hover:bg-opacity-10
-                  hover:text-white
-                  px-4
-                  py-2
-                  ${index === 0 ? "rounded-l-md" : ""}
-                  ${index === items.length - 1 ? "rounded-r-md" : ""}
-                  transition-all
-                  duration-300
-                  ease-in-out
-                  ${
-                    router.pathname === item.href
-                      ? "bg-white bg-opacity-20"
-                      : ""
-                  }`}
-                  href={item.href}
-                >
-                  {item.title}
-                </Link>
-              </strong>
-            </li>
-          ))}
+          <a href= "/" style={ aYearofFramedStyle }>
+            A Year of FRAMED
+          </a>
         </ul>
       </Container>
     </nav>
