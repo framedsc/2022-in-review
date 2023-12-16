@@ -24,6 +24,14 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="logo192.png" />
       </Head>
       <Navigation />
+      <picture>
+            <img
+              loading="lazy"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              src="/images/Topography.svg"
+              alt=""
+            />
+      </picture>
       <Component {...pageProps} />
       <Footer />
     </>

@@ -93,18 +93,35 @@ const yearTextStyle: CSS.Properties = {
   //color: '#dbdfd8',
 }
 
+const creditsTextStyle: CSS.Properties = {
+  position: 'absolute',
+  bottom: '0.5%',
+  left: '50%',
+  //fontWeight: 'bold',
+  fontStyle: 'italic',
+  fontSize: '10px',
+  textAlign: 'center',
+  transform: 'translate(-50%, 0%)',
+  opacity: '25%',
+  //mix-blend-mode: 'screen',
+  //color: '#dbdfd8',
+}
+
 export const YearCover = (year: number) => {
   const covers = getCovers(year);
+  var selectedCover = covers[Math.floor(Math.random() * Math.floor(covers.length))];
 
   return (
     <a className="year-cover-container" href={year.toString()} style={coverContainerStyle}>
       <div className="year-cover-frame" style={coverFrameStyle}></div>
-        <img src={ covers[Math.floor(Math.random() * Math.floor(covers.length))].shotUrl } style={coverImageStyle}/>
+        <img src={ selectedCover.shotUrl } style={coverImageStyle}/>
       <div className="cover-framed-text" style={framedTextStyle}>
         FRAMED
       </div>
       <div className="cover-year-text" style={yearTextStyle}>
         { year }
+      </div>
+      <div className="cover-credits-text" style={creditsTextStyle}>
       </div>
     </a>
   );
