@@ -60,7 +60,7 @@ const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
   );
 };
 
-export default function Home() {
+export default function WrapYear(year: number) {
   const [visible, setVisible] = useState(false);
   const [calendarDatum, setCalendarDatum] = useState<CalendarTooltipProps>();
   const [data, setData] = useState({sys: new Array<IShot>(), hof: new Array<IShot>(), authors: new Array<object>()});
@@ -69,7 +69,7 @@ export default function Home() {
   const getData = async () => {
     const imagesResponse = await getHofImages();
     const authorsResponse = await getHofAuthors();
-    const sysResponse = await getSysImages();
+    const sysResponse = await getSysImages(year);
     const normalizedSysImages = normalizeData(sysResponse.data);
     const systImagesList = Object.values(normalizedSysImages[0]) as IShot[];
     // drop the _default entry
@@ -78,10 +78,18 @@ export default function Home() {
     const normalizedAuthors = normalizeData(authorsResponse.data._default);
     const formattedImages = addProperties(normalizedImages, normalizedAuthors);
 
-    //startofyear 2022 = 1640995200
-    //startofyear 2023 = 1672534800
-    //endofyear 2023 = 1704070800
-    const yearImages = formattedImages.filter((item: { epochTime: number; }) => item.epochTime > 1640995200 && item.epochTime < 1672534800);
+    const startofyear: number = new Date(year, 0, 1).getTime() / 1000;
+    const endofyear: number = new Date(year + 1, 0, 1).getTime() / 1000;
+
+    //const startofyear: number = 1640995200;
+    //const endofyear: number = 1704070800;
+
+    console.log(1640995200, startofyear)
+    console.log(1704070800, endofyear)
+
+    const yearImages = formattedImages.filter((item: { epochTime: number; }) => item.epochTime > startofyear && item.epochTime < endofyear);
+
+    console.log(yearImages);
 
     setData({ sys: systImagesList, hof: yearImages, authors: normalizedAuthors});
   };
@@ -203,13 +211,13 @@ export default function Home() {
                 <div className="md:grid md:grid-cols-2 md:gap-x-16">
                   <div className="flex flex-col justify-center">
                     <h1 className="font-bold text-4xl md:text-7xl md:mb-8">
-                      Welcome to Framed&apos;s 2022 in Review!
+                      Welcome to Framed&apos;s {year} in Review!
                     </h1>
                     <br />
                     <p>
                       We wanted to take a moment to reflect on some of the most
                       stunning virtual photography and video game screenshots
-                      that the Framed community has produced throughout 2022.
+                      that the Framed community has produced throughout {year}.
                     </p>
                     <br />
                     <p>
@@ -348,7 +356,7 @@ export default function Home() {
                         Top 10 Games in Share Your Shot
                       </h2>
                       <p>
-                        As we wrap up 2022, it&apos;s time to take a look back
+                        As we wrap up {year}, it&apos;s time to take a look back
                         at the most captivating shots of the year in
                         Framed&apos;s Share Your Shot Discord channel. From the
                         snow-capped mountains of Skyrim to the neon-lit
@@ -362,9 +370,9 @@ export default function Home() {
                           (data.sys as IShot[]).filter(
                             (shot) =>
                               new Date(shot.date).getTime() >=
-                                new Date("2022-01-01").getTime() &&
+                                new Date(`${ year }-01-01`).getTime() &&
                               new Date(shot.date).getTime() <=
-                                new Date("2022-12-31").getTime(),
+                                new Date(`${ year }-12-31`).getTime(),
                           ),
                           11,
                         )}
@@ -485,7 +493,7 @@ export default function Home() {
                         the Framed community. We saw some familiar titles hold
                         their position at the top, as well as a few newer titles
                         breaking through to claim their spot in the top 10 games
-                        making it into the Hall of Framed for 2022.
+                        making it into the Hall of Framed for {year}.
                       </p>
                     </div>
                     <div className="aspect-video hidden md:block">
@@ -494,9 +502,9 @@ export default function Home() {
                           (data.hof as IShot[]).filter(
                             (shot) =>
                               new Date(shot.date).getTime() >=
-                                new Date("2022-01-01").getTime() &&
+                                new Date(`${ year }-01-01`).getTime() &&
                               new Date(shot.date).getTime() <=
-                                new Date("2022-12-31").getTime(),
+                                new Date(`${ year }-12-31`).getTime(),
                           ),
                           11,
                         )}
@@ -684,7 +692,7 @@ export default function Home() {
                       </h3>
                       <p>
                         It should come as no surprise that the busiest day for
-                        the Hall of Framed in 2022 features some of our most
+                        the Hall of Framed in {year} features some of our most
                         familiar and favorite titles. Red Dead Redemption 2
                         etched out the top spot with four different shots
                         gaining enough votes to break into the curated gallery,
@@ -714,13 +722,13 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="calendar h-screen grid grid-rows-2 gap-x-8 overflow-scroll md:overflow-hidden">
+              <div className="calendar h-screen grid grid-rows-2 gap-x-8 md:overflow-hidden">
                 <div
                   className="flex flex-col items-center w-h-screen md:w-full"
                   ref={segments["Daily Share Your Shot"]}
                 >
                   <h3 className="font-bold text-3xl pl-20">
-                    Share Your Shot Calendar in 2022
+                    Share Your Shot Calendar in {year}
                   </h3>
                   <Calendar
                     data={calendarDataFormat(data.sys)}
@@ -728,8 +736,8 @@ export default function Home() {
                       setCalendarDatum(d as any as CalendarTooltipProps);
                       setVisible(true);
                     }}
-                    from={new Date("2022-01-02")}
-                    to={new Date("2022-12-31")}
+                    from={new Date(`${ year }-01-02`)}
+                    to={new Date(`${ year }-12-31`)}
                     tooltip={CustomTooltip}
                   />
                 </div>
@@ -738,7 +746,7 @@ export default function Home() {
                   ref={segments["Daily Hall of Framed"]}
                 >
                   <h3 className="font-bold text-3xl pl-20">
-                    Hall of Framed Calendar in 2022
+                    Hall of Framed Calendar in {year}
                   </h3>
                   <Calendar
                     data={calendarDataFormat(data.hof)}
@@ -746,8 +754,8 @@ export default function Home() {
                       setCalendarDatum(d as any as CalendarTooltipProps);
                       setVisible(true);
                     }}
-                    from={new Date("2022-01-02")}
-                    to={new Date("2022-12-31")}
+                    from={new Date(`${ year }-01-02`)}
+                    to={new Date(`${ year }-12-31`)}
                     tooltip={CustomTooltip}
                   />
                 </div>
