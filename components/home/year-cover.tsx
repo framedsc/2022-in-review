@@ -63,7 +63,10 @@ const coverFrameStyle: CSS.Properties = {
   bottom: '20px', /* Adjust bottom position */
   backdropFilter: 'blur(20px) brightness(125%) saturate(120%)',
   maskComposite: 'exclude',
+  WebkitMaskComposite: 'exclude',
   mask:
+    'linear-gradient(transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%)',
+  WebkitMask:
     'linear-gradient(transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%)',
 }
 
