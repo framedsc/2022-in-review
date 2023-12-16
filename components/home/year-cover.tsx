@@ -88,6 +88,7 @@ const yearTextStyle: CSS.Properties = {
   transform: 'translate(-50%, -50%)',
   opacity: '80%',
   mixBlendMode: 'screen',
+  fontFamily: "'Galano Grotesque Alt (Numbers)', 'AtkinsonHyperlegible', 'HelveticaNeue', 'Helvetica', 'Arial', 'sans-serif'",
   //color: '#dbdfd8',
 }
 

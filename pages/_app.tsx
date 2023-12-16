@@ -1,4 +1,5 @@
 import "../styles/globals.scss";
+import '../public/fonts/stylesheet.css';
 import type { AppProps } from "next/app";
 import { Footer, Navigation } from "@components/global";
 import Head from "next/head";
