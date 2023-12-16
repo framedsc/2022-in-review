@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>A year of FRAMED</title>
       </Head>
       <div className='Covers wrapper' style={{  marginTop: '80px', display: 'flex',  flexDirection: 'row', alignItems: 'center',  justifyContent: 'space-around'}}>
         { YearCover(2023) }

@@ -196,7 +196,7 @@ export default function WrapYear(year: number) {
   return (
     <>
       <Head>
-        <title>Data</title>
+        <title>A Year of FRAMED: {year}</title>
         <meta name="description" content="Graphs and stuff" />
       </Head>
       <LoadWrapper>
