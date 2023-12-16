@@ -39,7 +39,7 @@ const coverContainerStyle: CSS.Properties = {
   position: 'relative',
   //width: '100%',
   //max-width: '600px', /* Set your desired max-width */
-  margin: '15px 0px',
+  margin: '15px',
   width: '480px',//'600px',
   height: '640px',//'800px',
   overflow: 'hidden',
