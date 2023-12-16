@@ -45,6 +45,7 @@ const coverContainerStyle: CSS.Properties = {
   textAlign: 'center',
   //transform: 'translate(-50%, -50%)',
   //left: '50%',
+  filter: 'drop-shadow(0 5px 0.75rem rgba(0, 0, 0, 0.5))',
 };
 
 const coverImageStyle: CSS.Properties = {

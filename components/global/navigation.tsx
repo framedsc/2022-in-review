@@ -42,9 +42,12 @@ export const Navigation = () => {
               </div>
             </Link>
           </li>
-          <a href= "/" style={ aYearofFramedStyle }>
+          <Link
+            href="/"
+            style ={ aYearofFramedStyle }
+          >
             A Year of FRAMED
-          </a>
+          </Link>
         </ul>
       </Container>
     </nav>
