@@ -39,6 +39,10 @@ const CustomTooltip = (data: CalendarTooltipProps) => {
 };
 
 const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
+  if (!('data' in data)){
+    return null;
+  }
+
   return (
     <div className="bg-framed-black text-white py-1 px-3 rounded-md h-96 aspect-video">
       {new Date(data.day).toLocaleDateString("en-US", {
@@ -81,15 +85,7 @@ export default function WrapYear(year: number) {
     const startofyear: number = new Date(year, 0, 1).getTime() / 1000;
     const endofyear: number = new Date(year + 1, 0, 1).getTime() / 1000;
 
-    //const startofyear: number = 1640995200;
-    //const endofyear: number = 1704070800;
-
-    console.log(1640995200, startofyear)
-    console.log(1704070800, endofyear)
-
     const yearImages = formattedImages.filter((item: { epochTime: number; }) => item.epochTime > startofyear && item.epochTime < endofyear);
-
-    console.log(yearImages);
 
     setData({ sys: systImagesList, hof: yearImages, authors: normalizedAuthors});
   };
@@ -628,9 +624,6 @@ export default function WrapYear(year: number) {
                   <div className="md:flex flex-col justify-center">
                     <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
                       {mostActiveHof.slice(0, 10).map((item, index) => {
-                        if (!item.gameName || !item.thumbnailUrl) {
-                          console.log("SHIT", mostActiveHof.slice(0, 10));
-                        }
                         return (
                           <a
                             key={`${item.author}-${index}`}
@@ -772,15 +765,18 @@ export default function WrapYear(year: number) {
           </picture>
         </main>
       </LoadWrapper>
-      <Modal
-        open={visible}
-        onClose={() => {
-          setVisible(false);
-          setCalendarDatum(undefined);
-        }}
-      >
-        {calendarDatum && <ModalContent data={calendarDatum} />}
-      </Modal>
+      {calendarDatum && Number(calendarDatum.value) > 0 ?
+        <Modal
+          open={visible}
+          onClose={() => {
+            setVisible(false);
+            setCalendarDatum(undefined);
+          }}
+        >
+          {calendarDatum && <ModalContent data={calendarDatum} />}
+        </Modal>
+        : null
+      }
     </>
   );
 }
