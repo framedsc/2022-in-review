@@ -251,7 +251,7 @@ export default function WrapYear(year: number) {
                             <div className="absolute w-full h-full transition-all duration-500 opacity-0 translate-y-5 hover:opacity-100 hover:translate-y-0">
                               <p
                                 className={`
-                            absolute bottom-0 left-0 right-0 text-white text-sm p-4
+                            absolute bottom-0 left-0 right-0 text-white text-sm p-3
                             bg-gradient-to-t from-framed-black/75
                           `}
                               >
@@ -265,9 +265,10 @@ export default function WrapYear(year: number) {
                             <picture>
                               <img
                                 loading="lazy"
-                                className="load transition-all -translate-y-10 opacity-0 duration-500 rounded-md object-cover w-full h-full"
+                                className="load transition-all -translate-y-10 opacity-0 duration-500 rounded-md object-cover w-full h-full aspect-square"
                                 alt={item.gameName}
                                 src={item.thumbnailUrl}
+                                //src={ index === 0 ? item.shotUrl : item.thumbnailUrl}
                               />
                             </picture>
                           </a>
@@ -279,7 +280,7 @@ export default function WrapYear(year: number) {
               </div>
               <div className="min-h-screen flex flex-col justify-center load transition-all -translate-y-10 opacity-0 duration-500 mb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
-                  <div className="hidden md:grid grid-cols-3 max-h-screen">
+                  <div className="hidden md:grid grid-cols-3">
                     {categoriesImages.map((item, index) => {
                       return (
                         <a
@@ -394,20 +395,24 @@ export default function WrapYear(year: number) {
                     </div>
                   </div>
                   <div className="flex flex-col justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4">
                       {top10sys.map((item, index) => {
+                        // dont render images if it cant complete the row.
+                        //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
+                        //  return null;
+                        //}
                         return (
                           <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
-                            ${index === 0 ? "col-span-1 row-span-3" : ""}
+                            ${index === 0 ? "col-span-1 row-span-2" : ""}
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
                             rel="noreferrer"
                           >
-                            <div className="absolute w-full h-full transition-all duration-500 opacity-100">
+                            <div className="absolute w-full h-full transition-all duration-500 opacity-100 aspect-square">
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0  p-4
@@ -428,9 +433,10 @@ export default function WrapYear(year: number) {
                             <picture>
                               <img
                                 loading="lazy"
-                                className="rounded-md object-cover w-full h-full"
+                                className="rounded-md object-cover w-full h-full aspect-square"
                                 alt={item.gameName}
                                 src={item.thumbnailUrl}
+                                //src={ index === 0 ? item.shotUrl : item.thumbnailUrl}
                               />
                             </picture>
                           </a>
@@ -446,20 +452,24 @@ export default function WrapYear(year: number) {
               >
                 <div className="grid md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
                   <div className="md:flex md:flex-col md:justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4" >
                       {top10hof.map((item, index) => {
+                        // dont render images if it cant complete the row.
+                        //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
+                        //  return null;
+                        //}
                         return (
                           <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
-                            ${index === 0 ? "col-span-1 row-span-3" : ""}
+                            ${index === 0 ? "col-span-1 row-span-2" : ""}
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
                             rel="noreferrer"
                           >
-                            <div className="absolute w-full h-full transition-all duration-500 opacity-100">
+                            <div className="absolute w-full h-full transition-all duration-500 opacity-100 aspect-square">
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0 p-4
@@ -480,9 +490,10 @@ export default function WrapYear(year: number) {
                             <picture>
                               <img
                                 loading="lazy"
-                                className="rounded-md object-cover w-full h-full"
+                                className="rounded-md object-cover w-full h-full aspect-square"
                                 alt={item.gameName}
                                 src={item.thumbnailUrl}
+                                //src={ index === 0 ? item.shotUrl : item.thumbnailUrl}
                               />
                             </picture>
                           </a>
@@ -582,20 +593,24 @@ export default function WrapYear(year: number) {
                     </div>
                   </div>
                   <div className="flex flex-col justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4" >
                       {mostActiveSys.slice(0, 10).map((item, index) => {
+                        // dont render images if it cant complete the row.
+                        //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
+                        //  return null;
+                        //}
                         return (
                           <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
-                            ${index === 0 ? "col-span-1 row-span-3" : ""}
+                            ${index === 0 ? "col-span-1 row-span-2" : ""}
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
                             rel="noreferrer"
                           >
-                            <div className="absolute w-full h-full transition-all duration-500 opacity-100">
+                            <div className="absolute w-full h-full transition-all duration-500 opacity-100 aspect-square">
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0  p-4
@@ -616,9 +631,10 @@ export default function WrapYear(year: number) {
                             <picture>
                               <img
                                 loading="lazy"
-                                className="rounded-md object-cover w-full h-full"
+                                className="rounded-md object-cover w-full h-full aspect-square"
                                 alt={item.gameName}
                                 src={item.thumbnailUrl}
+                                //src={ index === 0 ? item.shotUrl : item.thumbnailUrl}
                               />
                             </picture>
                           </a>
@@ -634,20 +650,24 @@ export default function WrapYear(year: number) {
               >
                 <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
                   <div className="md:flex flex-col justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4 max-h-screen">
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4">
                       {mostActiveHof.slice(0, 10).map((item, index) => {
+                        // dont render images if it cant complete the row.
+                        //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
+                        //  return null;
+                        //}
                         return (
                           <a
                             key={`${item.author}-${index}`}
                             className={`
                             relative load transition-all -translate-y-10 opacity-0 duration-500
-                            ${index === 0 ? "col-span-1 row-span-3" : ""}
+                            ${index === 0 ? "col-span-1 row-span-2" : ""}
                           `}
                             href= { getHOFUrl(item) }
                             target="_blank"
                             rel="noreferrer"
                           >
-                            <div className="absolute w-full h-full transition-all duration-500 opacity-100">
+                            <div className="absolute w-full h-full transition-all duration-500 opacity-100 aspect-square">
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0 p-4
@@ -668,9 +688,10 @@ export default function WrapYear(year: number) {
                             <picture>
                               <img
                                 loading="lazy"
-                                className="rounded-md object-cover w-full h-full"
+                                className="rounded-md object-cover w-full h-full aspect-square"
                                 alt={item.gameName}
                                 src={item.thumbnailUrl}
+                                //src={ index === 0 ? item.shotUrl : item.thumbnailUrl}
                               />
                             </picture>
                           </a>
