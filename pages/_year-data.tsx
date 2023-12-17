@@ -10,6 +10,7 @@ import {
   ErrorSection,
   LoadingSection,
 } from "@components/experience-fragments";
+import CSS from 'csstype';
 
 import { getHofAuthors, getHofImages, getSysImages } from './api/request';
 import { addProperties, normalizeData } from '../util/utils';
@@ -193,11 +194,20 @@ export default function WrapYear(year: number) {
     })
     .filter((item) => !!item.thumbnailUrl);
 
+  const recapLogoStyle: CSS.Properties = {
+    position: 'relative',
+    marginTop: '10px',
+    marginBottom: '20px',
+    padding: '0px 20px',
+    left: '50%',
+    width: '500px',
+    transform: 'translate(-50%, 0%)',
+  } 
+
   return (
     <>
       <Head>
         <title>A Year of FRAMED: {year}</title>
-        <meta name="description" content="Graphs and stuff" />
       </Head>
       <LoadWrapper>
         <main className="relative">
@@ -206,9 +216,11 @@ export default function WrapYear(year: number) {
               <div className="min-h-screen md:flex md:items-center load transition-all -translate-y-10 opacity-0 duration-500 mb-8">
                 <div className="md:grid md:grid-cols-2 md:gap-x-16">
                   <div className="flex flex-col justify-center">
-                    <h1 className="font-bold text-4xl md:text-7xl md:mb-8">
+                    <img src="recap-wsub-logo.svg" style={ recapLogoStyle }/>
+                    <br />
+                    <p>
                       Welcome to Framed&apos;s {year} in Review!
-                    </h1>
+                    </p>
                     <br />
                     <p>
                       We wanted to take a moment to reflect on some of the most

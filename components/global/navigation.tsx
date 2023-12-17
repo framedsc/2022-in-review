@@ -4,6 +4,11 @@ import React from "react";
 import { Container } from "./container";
 import CSS from 'csstype';
 
+const recapLogoStyle: CSS.Properties = {
+  position: 'relative',
+  width: '125px',
+}
+
 export const Navigation = () => {
   const router = useRouter();
 
@@ -46,7 +51,7 @@ export const Navigation = () => {
             href="/"
             style ={ aYearofFramedStyle }
           >
-            A Year of FRAMED
+            <img src="recap-nsub-logo.svg" style={ recapLogoStyle }/>
           </Link>
         </ul>
       </Container>

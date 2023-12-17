@@ -5,12 +5,21 @@ import CSS from 'csstype';
 import { YearCover} from "@components/home";
 
 const coverFrameStyle: CSS.Properties = {
-  marginTop: '80px',
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'space-around'
+}
+
+const recapLogoStyle: CSS.Properties = {
+  position: 'relative',
+  marginTop: '100px',
+  marginBottom: '40px',
+  padding: '0px 20px',
+  left: '50%',
+  width: '500px',
+  transform: 'translate(-50%, 0%)',
 }
 
 const Home = () => {
@@ -19,6 +28,9 @@ const Home = () => {
       <Head>
         <title>A year of FRAMED</title>
       </Head>
+
+      <img src="recap-wsub-logo.svg" style={ recapLogoStyle }/>
+
       <div className='Covers wrapper' style={ coverFrameStyle }>
         { YearCover(2023) }
         { YearCover(2022) }

@@ -1,22 +1,7 @@
 import React, { useRef, useEffect, useState, RefObject } from "react";
 import CSS from 'csstype';
 import { IShot } from "@types";
-
-const covers2021 = [
-  {"shotUrl": "https://cdn.framedsc.com/images/1615390052_Riddle_Me_This.png", "author": "501389636908744704"},
-  {"shotUrl": "https://cdn.framedsc.com/images/1615651554_RE_P8.jpg", "author": "512616364406603788"},
-]
-
-const covers2022 = [
-  {"shotUrl": "https://cdn.framedsc.com/images/1651190325_Cyberpunk2077_2022-04-28_03-58-23.png", "author": "432838731376885762"},
-  {"shotUrl": "https://cdn.framedsc.com/images/1662599787_Monkey_Madness.png", "author": "364473042111561730"},
-]
-
-const covers2023 = [
-  {"shotUrl": "https://cdn.framedsc.com/images/1674558885_Cyberpunk2077_2023-01-23_11-50-32.png", "author": "207168185353371648"},
-  {"shotUrl": "https://cdn.framedsc.com/images/1675500158_B_52.png", "author": "576442964163690527"},
-  {"shotUrl": "https://cdn.framedsc.com/images/1697200114_ACMirage_2023-10-12_21-00-16_stitch2.png", "author": "220206083136946176"},
-]
+import { covers2021, covers2022, covers2023 } from "./covers-lists";
 
 const getCovers = (year: number) => {
   switch(year) { 
@@ -113,7 +98,8 @@ const creditsTextStyle: CSS.Properties = {
 
 export const YearCover = (year: number) => {
   const covers = getCovers(year);
-  var selectedCover = covers[Math.floor(Math.random() * Math.floor(covers.length))];
+   var selectedCover = covers[Math.floor(Math.random() * Math.floor(covers.length))];
+  // var selectedCover = {shotUrl: "mockedLink", author: "test" };
 
   return (
     <a className="year-cover-container" href={year.toString()} style={coverContainerStyle}>
