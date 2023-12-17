@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:title" content="A year of FRAMED"/>
         <meta property="og:description" content="A collection of each year's summary of FRAMED screenshots, guides, and activity."/>
         <meta property="og:image" content="twitter-card.jpg"/>	
-        <link rel="apple-touch-icon" href="logo192.png" />
+        <link rel="apple-touch-icon" href="logo512.jpg" />
       </Head>
       <Navigation />
       <picture>
