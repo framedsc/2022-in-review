@@ -26,7 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Navigation />
       <picture>
             <img
-              loading="lazy"
               className="absolute top-0 left-0 object-cover"
               src="/images/Topography.svg"
               alt=""

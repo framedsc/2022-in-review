@@ -56,15 +56,18 @@ const coverFrameStyle: CSS.Properties = {
 
 const framedTextStyle: CSS.Properties = {
   position: 'absolute',
-  top: '13%',
+  top: '11%',
   left: '50%',
   fontWeight: 'bold',
-  fontSize: `18cqw`,
+  fontSize: `19.5cqw`,
   textAlign: 'center',
   transform: 'translate(-50%, -50%)',
   opacity: '90%',
   //mix-blend-mode: 'screen',
   //color: '#dbdfd8',
+  fontFamily: "Galano Grotesque Alt",
+  letterSpacing: "-0.05em",
+  //filter: 'drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5))',
 }
 
 const yearTextStyle: CSS.Properties = {
