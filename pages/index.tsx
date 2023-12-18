@@ -9,7 +9,8 @@ const coverFrameStyle: CSS.Properties = {
   flexDirection: 'row',
   flexWrap: 'wrap',
   alignItems: 'center',
-  justifyContent: 'space-around'
+  justifyContent: 'space-around',
+  marginBottom: "30px",
 }
 
 const recapLogoStyle: CSS.Properties = {

@@ -35,7 +35,6 @@ const coverContainerStyle: CSS.Properties = {
 };
 
 const coverImageStyle: CSS.Properties = {
-  height: '100%',
   display: 'block',
   objectFit: 'cover',
 }

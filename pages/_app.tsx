@@ -6,7 +6,7 @@ import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <div style={{ overflow: "hidden", position: "relative", width: "100%"}}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -27,13 +27,14 @@ export default function App({ Component, pageProps }: AppProps) {
       <picture>
             <img
               loading="lazy"
-              className="absolute top-0 left-0 w-full h-full object-cover"
+              className="absolute top-0 left-0 object-cover"
               src="/images/Topography.svg"
               alt=""
+              style = {{zIndex: "-1", objectFit: "cover", minHeight: "200%"}}
             />
       </picture>
       <Component {...pageProps} />
       <Footer />
-    </>
+    </div>
   );
 }
