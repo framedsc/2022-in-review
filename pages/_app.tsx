@@ -24,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="logo512.jpg" />
       </Head>
       <Navigation />
+      <Component {...pageProps} />
       <picture>
             <img
               className="absolute top-0 left-0 object-cover"
@@ -32,7 +33,6 @@ export default function App({ Component, pageProps }: AppProps) {
               style = {{zIndex: "-1", objectFit: "cover", minHeight: "200%"}}
             />
       </picture>
-      <Component {...pageProps} />
       <Footer />
     </div>
   );

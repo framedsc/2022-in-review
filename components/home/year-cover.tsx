@@ -35,6 +35,7 @@ const coverContainerStyle: CSS.Properties = {
 };
 
 const coverImageStyle: CSS.Properties = {
+  minHeight: '100%',
   display: 'block',
   objectFit: 'cover',
 }
@@ -45,7 +46,7 @@ const coverFrameStyle: CSS.Properties = {
   left: '20px', /* Adjust left position */
   right: '20px', /* Adjust right position */
   bottom: '20px', /* Adjust bottom position */
-  backdropFilter: 'blur(20px) brightness(125%) saturate(120%)',
+  backdropFilter: 'blur(20px) brightness(115%) saturate(120%)',
   maskComposite: 'exclude',
   WebkitMaskComposite: 'exclude',
   mask:
@@ -101,7 +102,8 @@ const creditsTextStyle: CSS.Properties = {
 export const YearCover = (year: number) => {
   const covers = getCovers(year);
    var selectedCover = covers[Math.floor(Math.random() * Math.floor(covers.length))];
-  // var selectedCover = {shotUrl: "mockedLink", author: "test" };
+   //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1650423560_eldenring_2022-03-17_13-54-54.png", author: "test" };
+   //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1659302449_Stray-Win64-Shipping.exe_2022-07-24_13-42-01_86x.png", author: "test" };
 
   return (
     <a className="year-cover-container" href={year.toString()} style={coverContainerStyle}>
