@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <picture>
             <img
               className="absolute top-0 left-0 object-cover"
-              src="/wrapped-images/Topography.svg"
+              src="wrapped-images/Topography.svg"
               alt=""
               style = {{zIndex: "-1", objectFit: "cover", minHeight: "200%"}}
             />
