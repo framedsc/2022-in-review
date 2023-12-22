@@ -65,7 +65,16 @@ const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
   );
 };
 
-export default function WrapYear(year: number) {
+const insertFlavourText = (text: any[]) => {
+  const paragraphs = text.map((paragraph, index) => <> {index !== text.length -1 ? <br /> : null } <p> {paragraph} </p> </>);
+  return (
+    <>
+      {paragraphs}
+    </>
+  );
+};
+
+export default function WrapYear(year: number, flavourText: { intro: any; top10sys: any; top10hof: any; busysys: any; busyhof: any; }) {
   const [visible, setVisible] = useState(false);
   const [calendarDatum, setCalendarDatum] = useState<CalendarTooltipProps>();
   const [data, setData] = useState({sys: new Array<IShot>(), hof: new Array<IShot>(), authors: new Array<object>()});
@@ -221,21 +230,7 @@ export default function WrapYear(year: number) {
                     <p>
                       Welcome to Framed&apos;s {year} in Review!
                     </p>
-                    <br />
-                    <p>
-                      We wanted to take a moment to reflect on some of the most
-                      stunning virtual photography and video game screenshots
-                      that the Framed community has produced throughout {year}.
-                    </p>
-                    <br />
-                    <p>
-                      From breathtaking landscapes in open-world games to
-                      intense action shots in first-person shooters, our
-                      community has truly outdone itself in capturing the beauty
-                      and emotion of these digital worlds. Join us as we look
-                      back at some of the most memorable moments and incredible
-                      imagery of the past year.
-                    </p>
+                    { insertFlavourText(flavourText.intro) }
                   </div>
                   <div className="flex flex-col justify-center">
                     <div className="grid grid-cols-3 gap-4 aspect-square mt-8 md:mt-32">
@@ -364,14 +359,7 @@ export default function WrapYear(year: number) {
                       <h2 className="md:text-6xl text-3xl font-bold mb-8">
                         Top 10 Games in Share Your Shot
                       </h2>
-                      <p>
-                        As we wrap up {year}, it&apos;s time to take a look back
-                        at the most captivating shots of the year in
-                        Framed&apos;s Share Your Shot Discord channel. From the
-                        snow-capped mountains of Skyrim to the neon-lit
-                        cityscapes of Cyberpunk 2077, these shots are the
-                        culmination of our community&apos;s creativity.
-                      </p>
+                      { insertFlavourText(flavourText.top10sys) }
                     </div>
                     <div className="aspect-video hidden md:block">
                       <Pie
@@ -506,14 +494,7 @@ export default function WrapYear(year: number) {
                       <h2 className="text-3xl md:text-6xl font-bold mb-8">
                         Top 10 Games in the Hall of Framed
                       </h2>
-                      <p>
-                        Each shot submitted has a chance to make it to the Hall
-                        of Framed - our curated collection of shots voted for by
-                        the Framed community. We saw some familiar titles hold
-                        their position at the top, as well as a few newer titles
-                        breaking through to claim their spot in the top 10 games
-                        making it into the Hall of Framed for {year}.
-                      </p>
+                      { insertFlavourText(flavourText.top10hof) }
                     </div>
                     <div className="aspect-video hidden md:block">
                       <Pie
@@ -560,20 +541,7 @@ export default function WrapYear(year: number) {
                           year: "numeric",
                         })}
                       </h3>
-                      <p>
-                        On our busiest day of the year, one day after the launch
-                        of the martial-arts title SIFU, our community posted the
-                        highest number of shots in a single day for the entire
-                        year. With a whopping 96 shots posted in a single day,
-                        the Framed community flooded the server with all manner
-                        of impressive shots. With punch-em-up title SIFU
-                        claiming the top spot at 13 shots at 13.54% of the
-                        day&apos;s shots, followed closely by God of War & No
-                        Man&apos;s Sky taking the second and third place slots
-                        respectively. The busiest day also saw some lesser shot
-                        titles make an appearance with Bloodborne, Twin Mirror,
-                        and Mosaic also making appearances.
-                      </p>
+                      { insertFlavourText(flavourText.busysys) }
                     </div>
                     <div className="aspect-video hidden md:block">
                       <Pie
@@ -716,18 +684,7 @@ export default function WrapYear(year: number) {
                           year: "numeric",
                         })}
                       </h3>
-                      <p>
-                        It should come as no surprise that the busiest day for
-                        the Hall of Framed in {year} features some of our most
-                        familiar and favorite titles. Red Dead Redemption 2
-                        etched out the top spot with four different shots
-                        gaining enough votes to break into the curated gallery,
-                        followed quickly by server-mainstay title Cyberpunk
-                        2077. Giant Squid & Annapurna Interactive&apos;s The
-                        Pathless makes a surprising entry as the third highest
-                        entry, showcasing the game&apos;s visuals from a whole
-                        new angle.
-                      </p>
+                      { insertFlavourText(flavourText.busyhof) }
                     </div>
                     <div className="aspect-video hidden md:block">
                       <Pie
