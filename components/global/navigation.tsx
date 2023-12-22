@@ -48,7 +48,7 @@ export const Navigation = () => {
             </Link>
           </li>
           <Link
-            href="/"
+            href="https://framedsc.com/framed-wrapped/"
             style ={ aYearofFramedStyle }
           >
             <img src="recap-nsub-logo.svg" style={ recapLogoStyle }/>

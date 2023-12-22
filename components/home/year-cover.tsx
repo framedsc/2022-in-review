@@ -99,40 +99,18 @@ const creditsTextStyle: CSS.Properties = {
   //color: '#dbdfd8',
 }
 
-function shuffle(array: any[]) {
-  var i = 0;
-  var j = 0;
-  var temp = null;
-  for (i = array.length - 1; i > 0; i -= 1) {
-    j = Math.floor(Math.random() * (i + 1))
-    temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  return array;
-}
-
-function genRan(quantity: number, length: number) {
-  // Ensure that quantity is never greater than length
-  if (quantity > length) {
-    quantity = length;
-  }
-  // Create an array of consecutive numbers from 1 to N
-  var array = Array.from({
-    length: length
-  }, (value, key = 0) => key + 1);
-  // Run shuffle get the returned shuffled array
-  var shuffled = shuffle(array);
-  // return an array of N (quantity) random numbers 
-  return shuffled.splice(0, quantity);
-}
 
 
 export const YearCover = (year: number) => {
   const covers = getCovers(year);
-   var selectedCover = covers[genRan(1, covers.length)[0]];
-   //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1650423560_eldenring_2022-03-17_13-54-54.png", author: "test" };
-   //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1659302449_Stray-Win64-Shipping.exe_2022-07-24_13-42-01_86x.png", author: "test" };
+  const [selectedCover, setSelectedCover] = useState<any>(false);
+  if(!selectedCover){
+    setSelectedCover(covers[Math.floor(Math.random() * Math.floor(covers.length))]);
+  }
+
+  //var selectedCover = covers[];
+  //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1650423560_eldenring_2022-03-17_13-54-54.png", author: "test" };
+  //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1659302449_Stray-Win64-Shipping.exe_2022-07-24_13-42-01_86x.png", author: "test" };
 
   return (
     <a className="year-cover-container" href={year.toString()} style={coverContainerStyle}>
