@@ -420,9 +420,9 @@ export default function WrapYear(year: number) {
                           `}
                               >
                                 <p className="text-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.value} shots
+                                  {index + 1}: {item.gameName}
                                   <br />
-                                  {item.gameName}
+                                  {item.value} shots
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
@@ -477,9 +477,9 @@ export default function WrapYear(year: number) {
                           `}
                               >
                                 <p className="text-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.value} shots
+                                  {index + 1}: {item.gameName}
                                   <br />
-                                  {item.gameName}
+                                  {item.value} shots
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
@@ -618,9 +618,9 @@ export default function WrapYear(year: number) {
                           `}
                               >
                                 <p className="text-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.value} shots
+                                  {index + 1}: {item.gameName}
                                   <br />
-                                  {item.gameName}
+                                  {item.value} shots
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
@@ -675,9 +675,9 @@ export default function WrapYear(year: number) {
                           `}
                               >
                                 <p className="text-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.value} shots
+                                  {index + 1}: {item.gameName}
                                   <br />
-                                  {item.gameName}
+                                  {item.value} shots
                                   <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
