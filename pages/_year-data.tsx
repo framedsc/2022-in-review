@@ -792,7 +792,7 @@ export default function WrapYear(year: number) {
             <img
               loading="lazy"
               className="absolute top-0 left-0 w-full h-full object-cover"
-              src="/images/Topography.svg"
+              src="/wrapped-images/Topography.svg"
               alt=""
             />
           </picture>
