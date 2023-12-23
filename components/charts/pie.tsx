@@ -55,12 +55,6 @@ export const Pie = (
           spacing: 10,
         },
       ]}
-      fill={props.data.map((item, index) => ({
-        match: {
-          id: item.id,
-        },
-        id: index == props.data.length - 1 ? "clean" : (index % 2 === 0 ? "dots" : "lines"),
-      }))}
       {...props}
     />
   );
