@@ -326,7 +326,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                     })}
                   </div>
                   <div>
-                    <h2 className="text-6xl font-bold mb-8">Categories</h2>
+                    <h2 className="text-6xl font-semibold mb-8">Categories</h2>
                     {Object.keys(segments).map((key) => {
                       return (
                         <div key={key} className="mb-8" ref={segments[key]}>
@@ -342,7 +342,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                                 }
                               }}
                             >
-                              <h3 className="text-3xl font-bold">{key}</h3>
+                              <h3 className="text-3xl font-semibold">{key}</h3>
                             </button>
                           </div>
                         </div>
@@ -358,7 +358,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
                   <div className="md:grid md:grid-rows-2 md:gap-y-8 mb-16 md:mb-0">
                     <div className="h-full flex flex-col justify-end">
-                      <h2 className="md:text-6xl text-3xl font-bold mb-8">
+                      <h2 className="md:text-6xl text-3xl font-semibold mb-8">
                         Top 10 Games in Share Your Shot
                       </h2>
                       { insertFlavourText(flavourText.top10sys) }
@@ -409,7 +409,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-black/75
                           `}
                               >
-                                <p className="text-framed-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-semibold text-xs md:text-base">
                                   {item.gameName}
                                   <br />
                                 </p>
@@ -464,7 +464,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-black/75
                           `}
                               >
-                                <p className="text-framed-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-semibold text-xs md:text-base">
                                   {item.gameName}
                                   <br />
                                 </p>
@@ -493,7 +493,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   </div>
                   <div className="order-first md:order-none md:grid md:grid-rows-2 md:gap-y-8">
                     <div className="md:h-full md:flex md:flex-col md:justify-end">
-                      <h2 className="text-3xl md:text-6xl font-bold mb-8">
+                      <h2 className="text-3xl md:text-6xl font-semibold mb-8">
                         Top 10 Games in the Hall of Framed
                       </h2>
                       { insertFlavourText(flavourText.top10hof) }
@@ -528,10 +528,10 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                 <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
                   <div className="grid md:grid-rows-2 gap-y-8">
                     <div className="h-full flex flex-col justify-end">
-                      <h2 className="text-3xl md:text-6xl font-bold mb-8">
+                      <h2 className="text-3xl md:text-6xl font-semibold mb-8">
                         Most Active Day in Share Your Shot
                       </h2>
-                      <h3 className="text-2xl md:text-4xl font-bold mb-8">
+                      <h3 className="text-2xl md:text-4xl font-semibold mb-8">
                         {new Date(
                           calendarDataFormat(data.sys).sort(
                             (a, b) => b.value - a.value,
@@ -583,7 +583,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-black/75
                           `}
                               >
-                                <p className="text-framed-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-semibold text-xs md:text-base">
                                   {item.gameName}
                                   <br />
                                 </p>
@@ -638,7 +638,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-black/75
                           `}
                               >
-                                <p className="text-framed-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-semibold text-xs md:text-base">
                                   {item.gameName}
                                   <br />
                                 </p>
@@ -667,10 +667,10 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   </div>
                   <div className="md:grid md:grid-rows-2 md:gap-y-8 order-first md:order-none">
                     <div className="h-full flex flex-col justify-end">
-                      <h2 className="text-3xl md:text-6xl font-bold mb-8">
+                      <h2 className="text-3xl md:text-6xl font-semibold mb-8">
                         The Most Active Day in the Hall of Framed
                       </h2>
-                      <h3 className="text-2xl font-bold mb-4">
+                      <h3 className="text-2xl font-semibold mb-4">
                         {new Date(
                           calendarDataFormat(data.hof).sort(
                             (a, b) => b.value - a.value,
@@ -708,7 +708,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   className="flex flex-col items-center w-h-screen md:w-full"
                   ref={segments["Daily Share Your Shot"]}
                 >
-                  <h3 className="font-bold text-3xl pl-20">
+                  <h3 className="font-semibold text-3xl pl-20">
                     Share Your Shot Calendar in {year}
                   </h3>
                   <Calendar
@@ -726,7 +726,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   className="flex flex-col items-center w-h-screen md:w-full"
                   ref={segments["Daily Hall of Framed"]}
                 >
-                  <h3 className="font-bold text-3xl pl-20">
+                  <h3 className="font-semibold text-3xl pl-20">
                     Hall of Framed Calendar in {year}
                   </h3>
                   <Calendar
