@@ -52,9 +52,9 @@ const coverFrameStyle: CSS.Properties = {
   maskComposite: 'exclude',
   WebkitMaskComposite: 'exclude',
   mask:
-    'linear-gradient(transparent 0%, white 0%, white 2.34375%, 2.34375%, transparent 97.65625%, white 97.65625%, white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white 3.125%, transparent 3.125%, transparent 96.875%, 96.875%, white 100%, transparent 100%)',
+    'linear-gradient(transparent 0%, white 0%, white 2.33%, 2.33%, transparent 97.66%, white 97.66%, white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white 3.12%, transparent 3.12%, transparent 96.88%, 96.88%, white 100%, transparent 100%)',
   WebkitMask:
-    'linear-gradient(transparent 0%, white 0%, white 2.34375%, 2.34375%, transparent 97.65625%, white 97.65625%, white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white 3.125%, transparent 3.125%, transparent 96.875%, 96.875%, white 100%, transparent 100%)',
+    'linear-gradient(transparent 0%, white 0%, white 2.33%, 2.33%, transparent 97.66%, white 97.66%, white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white 3.12%, transparent 3.12%, transparent 96.88%, 96.88%, white 100%, transparent 100%)',
 }
 
 const framedTextStyle: CSS.Properties = {
@@ -62,7 +62,7 @@ const framedTextStyle: CSS.Properties = {
   top: '13%',
   left: '50%',
   fontWeight: 'bold',
-  fontSize: `19.5cqw`,
+  fontSize: `19.5cqi`,
   textAlign: 'center',
   transform: 'translate(-50%, -50%)',
   opacity: '90%',
@@ -103,12 +103,16 @@ const creditsTextStyle: CSS.Properties = {
 
 
 
-export const YearCover = (year: number) => {
+export function YearCover(year: number) {
   const covers = getCovers(year);
   const [selectedCover, setSelectedCover] = useState<any>(false);
 
   useEffect(() => {
-    setSelectedCover(covers[Math.floor(Math.random() * Math.floor(covers.length))]); 
+    if(!selectedCover){
+      var ranIndex: number = Math.floor(Math.random() * Math.floor(covers.length));
+      console.log(ranIndex);
+      setSelectedCover(covers[ranIndex]); 
+    }
   }, [selectedCover]);
 
   //var selectedCover = covers[];
