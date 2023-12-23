@@ -25,8 +25,9 @@ const coverContainerStyle: CSS.Properties = {
   //width: '100%',
   //max-width: '600px', /* Set your desired max-width */
   margin: '15px',
-  width: '480px',//'600px',
-  height: '640px',//'800px',
+  width: '480px',
+  //height: '640px',
+  aspectRatio: 3 / 4,
   overflow: 'hidden',
   textAlign: 'center',
   //transform: 'translate(-50%, -50%)',
@@ -38,6 +39,7 @@ const coverImageStyle: CSS.Properties = {
   minHeight: '100%',
   display: 'block',
   objectFit: 'cover',
+  aspectRatio: 'inherit',
 }
 
 const coverFrameStyle: CSS.Properties = {

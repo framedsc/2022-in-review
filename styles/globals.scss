@@ -40,23 +40,3 @@ html {
 .year-cover-container {
   container-type: inline-size;
 }
-
-// Main site style
-h1, h2, h3, h4, h5, h6 {
-	//margin-top: 0;
-	font-family: 'Galano Grotesque Alt', Arial, Helvetica, sans-serif;
-	line-height: 100%;
-}
-
-body {
-	font-weight: normal;
-	min-height: 100%;
-	overflow-x: hidden;
-	//margin: 0;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	min-height: 100%;
-	font-family: 'Galano Grotesque Alt (Numbers)', 'Atkinson Hyperlegible', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 16px;
-}
