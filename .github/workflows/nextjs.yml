@@ -14,7 +14,7 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: 15.x   
+        node-version: 21.x   
     - run: npm install
     - run: npm run build
     - uses: peaceiris/actions-gh-pages@v3.7.3
