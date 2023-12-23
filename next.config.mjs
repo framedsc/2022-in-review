@@ -4,7 +4,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-//const path = import("path");
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -13,7 +12,7 @@ const nextConfig = {
     loader: 'akamai',
     path: '',
   },
-  assetPrefix: './',
+  //assetPrefix: './',
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
