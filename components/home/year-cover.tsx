@@ -52,9 +52,9 @@ const coverFrameStyle: CSS.Properties = {
   maskComposite: 'exclude',
   WebkitMaskComposite: 'exclude',
   mask:
-    'linear-gradient(transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%)',
+    'linear-gradient(transparent 0%, white 0%, white 2.34375%, 2.34375%, transparent 97.65625%, white 97.65625%, white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white 3.125%, transparent 3.125%, transparent 96.875%, 96.875%, white 100%, transparent 100%)',
   WebkitMask:
-    'linear-gradient(transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white calc(0% + 15px), transparent calc(0% + 15px), transparent calc(100% - 15px), white calc(100% - 15px), white 100%, transparent 100%)',
+    'linear-gradient(transparent 0%, white 0%, white 2.34375%, 2.34375%, transparent 97.65625%, white 97.65625%, white 100%, transparent 100%), linear-gradient(0.25turn, transparent 0%, white 0%, white 3.125%, transparent 3.125%, transparent 96.875%, 96.875%, white 100%, transparent 100%)',
 }
 
 const framedTextStyle: CSS.Properties = {
