@@ -12,7 +12,7 @@ const nextConfig = {
     loader: 'akamai',
     path: '',
   },
-  //assetPrefix: './',
+  assetPrefix: './',
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
