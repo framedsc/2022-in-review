@@ -14,7 +14,7 @@ const nextConfig = {
   },
   assetPrefix: './',
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles"), path.join(__dirname, "public\fonts")],
+    includePaths: [path.join(__dirname, "styles")],
   },
 };
 
