@@ -104,9 +104,10 @@ const creditsTextStyle: CSS.Properties = {
 export const YearCover = (year: number) => {
   const covers = getCovers(year);
   const [selectedCover, setSelectedCover] = useState<any>(false);
-  if(!selectedCover){
-    setSelectedCover(covers[Math.floor(Math.random() * Math.floor(covers.length))]);
-  }
+
+  useEffect(() => {
+    setSelectedCover(covers[Math.floor(Math.random() * Math.floor(covers.length))]); 
+  }, [selectedCover]);
 
   //var selectedCover = covers[];
   //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1650423560_eldenring_2022-03-17_13-54-54.png", author: "test" };
