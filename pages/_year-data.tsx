@@ -27,7 +27,7 @@ const getHOFUrl = (item: { epochTime: any; }) => {
 
 const CustomTooltip = (data: CalendarTooltipProps) => {
   return (
-    <div className="bg-framed-black text-white py-1 px-3 rounded-md shadow-md">
+    <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md shadow-md">
       {new Date(data.day).toLocaleDateString("en-US", {
         timeZone: "UTC",
         day: "2-digit",
@@ -45,7 +45,7 @@ const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
   }
 
   return (
-    <div className="bg-framed-black text-white py-1 px-3 rounded-md h-96 aspect-video">
+    <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md h-96 aspect-video">
       {new Date(data.day).toLocaleDateString("en-US", {
         timeZone: "UTC",
         day: "2-digit",
@@ -56,7 +56,7 @@ const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
       <Pie
         data={gameDistPie((data as CalendarPieTooltip).data.shots, 11)}
         tooltip={(d) => (
-          <div className="bg-framed-black text-white py-1 px-3 rounded-md shadow-md">
+          <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md shadow-md">
             {d.datum.label}: <strong>{d.datum.value}</strong> shots
           </div>
         )}
@@ -374,7 +374,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           11,
                         )}
                         tooltip={(d) => (
-                          <div className="bg-framed-black text-white py-1 px-3 rounded-md shadow-md">
+                          <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md shadow-md">
                             {d.datum.label}: <strong>{d.datum.value}</strong>{" "}
                             shots
                           </div>
@@ -407,7 +407,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-framed-black/75
                           `}
                               >
-                                <p className="text-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-bold text-xs md:text-base">
                                   {index + 1}: {item.gameName}
                                   <br />
                                   {item.value} shots
@@ -464,7 +464,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-framed-black/75
                           `}
                               >
-                                <p className="text-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-bold text-xs md:text-base">
                                   {index + 1}: {item.gameName}
                                   <br />
                                   {item.value} shots
@@ -509,7 +509,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           11,
                         )}
                         tooltip={(d) => (
-                          <div className="bg-framed-black text-white py-1 px-3 rounded-md shadow-md">
+                          <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md shadow-md">
                             {d.datum.label}: <strong>{d.datum.value}</strong>{" "}
                             shots
                           </div>
@@ -552,7 +552,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           11,
                         )}
                         tooltip={(d) => (
-                          <div className="bg-framed-black text-white py-1 px-3 rounded-md shadow-md">
+                          <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md shadow-md">
                             {d.datum.label}: <strong>{d.datum.value}</strong>{" "}
                             shots
                           </div>
@@ -585,7 +585,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-framed-black/75
                           `}
                               >
-                                <p className="text-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-bold text-xs md:text-base">
                                   {index + 1}: {item.gameName}
                                   <br />
                                   {item.value} shots
@@ -642,7 +642,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             bg-gradient-to-t from-framed-black/75
                           `}
                               >
-                                <p className="text-white font-bold text-xs md:text-base">
+                                <p className="text-framed-white font-bold text-xs md:text-base">
                                   {index + 1}: {item.gameName}
                                   <br />
                                   {item.value} shots
@@ -695,7 +695,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           11,
                         )}
                         tooltip={(d) => (
-                          <div className="bg-framed-black text-white py-1 px-3 rounded-md shadow-md">
+                          <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md shadow-md">
                             {d.datum.label}: <strong>{d.datum.value}</strong>{" "}
                             shots
                           </div>

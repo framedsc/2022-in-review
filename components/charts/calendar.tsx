@@ -26,10 +26,10 @@ export const Calendar = (props: Omit<CalendarSvgProps, "height" | "width">) => {
           itemHeight: 0,
           itemsSpacing: 14,
           itemDirection: "right-to-left",
-          itemTextColor: "#FFF",
+          itemTextColor: "#DBDFD8", //framed-white
         },
       ]}
-      theme={{ textColor: "#FFF" }}
+      theme={{ textColor: "#DBDFD8" }} //framed-white
       {...props}
     />
   );

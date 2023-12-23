@@ -23,7 +23,7 @@ export const Pie = (
       arcLinkLabelsSkipAngle={1}
       arcLinkLabel={(d) => `${d.id} (${((d.value / total) * 100).toFixed(2)}%)`}
       enableArcLabels={false}
-      arcLinkLabelsTextColor="#FFF"
+      arcLinkLabelsTextColor="#DBDFD8" //framed-white
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
       arcLabelsSkipAngle={10}
