@@ -30,7 +30,7 @@ const Home = () => {
         <title>A year of FRAMED</title>
       </Head>
 
-      <img src="recap-wsub-logo.svg" style={ recapLogoStyle }/>
+      <img src="/recap-wsub-logo.svg" style={ recapLogoStyle }/>
 
       <div className='Covers wrapper' style={ coverFrameStyle }>
         { YearCover(2023) }
