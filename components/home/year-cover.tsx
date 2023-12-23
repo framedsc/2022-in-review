@@ -101,93 +101,70 @@ const creditsTextStyle: CSS.Properties = {
   //color: '#dbdfd8',
 }
 
-
-
 export function YearCover(year: number) {
   const covers = getCovers(year);
-  const [selectedCover, setSelectedCover] = useState<any>(false);
-
-  useEffect(() => {
-    if(!selectedCover){
-      var ranIndex: number = Math.floor(Math.random() * Math.floor(covers.length));
-      console.log(ranIndex);
-      setSelectedCover(covers[ranIndex]); 
-    }
-  }, [selectedCover]);
-
-  //var selectedCover = covers[];
-  //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1650423560_eldenring_2022-03-17_13-54-54.png", author: "test" };
-  //var selectedCover = {shotUrl: "https://cdn.framedsc.com/images/1659302449_Stray-Win64-Shipping.exe_2022-07-24_13-42-01_86x.png", author: "test" };
-
-  return (
-    <a className="year-cover-container" href={year.toString()} style={coverContainerStyle}>
-      <div className="year-cover-frame" style={coverFrameStyle}></div>
-        <img src={ selectedCover.shotUrl } style={coverImageStyle}/>
-      <div className="cover-framed-text" style={framedTextStyle}>
-        FRAMED
-      </div>
-      <div className="cover-year-text" style={yearTextStyle}>
-        { year }
-      </div>
-      <div className="cover-credits-text" style={creditsTextStyle}>
-      </div>
-    </a>
-  );
-};
-
-/*
-//const [image1, setImage1] = useRef({ shotUrl: "", author: 0});
-//const [image2, setImage2] = useState< any | null>(null);
-var image1 = { shotUrl: "", author: ""};
-var image2 = { shotUrl: "", author: ""};
-var imageToDisplay = 1;
-//const renderInitialized = useRef(false)
-
-export const YearCover = (year: number) => {
-  //const [switchShotInterval, setSwitchShotInterval] = useState(null);
+  const [image1, setImage1] = useState<any | null>(null);
+  const [image2, setImage2] = useState<any | null>(null);
+  const [switchCoverInterval, setSwitchCoverInterval] = useState<any | null>(null);
+  const imageToDisplay = useRef(1);
+  const renderInitialized = useRef(false);
+  const componentId = useRef(`YearCover_${Math.random().toString(36).substr(2, 9)}`);
 
   function switchImage(year: number) {
-    const covers = getCovers(year);
+    console.log(`Switching cover from ${year} in component ${componentId.current}`);
 
-    if(imageToDisplay === 1){
-      imageToDisplay = 2
-      image1 = (covers[Math.floor(Math.random() * Math.floor(covers.length))]);
-    }
-    else if (imageToDisplay === 2){
-      imageToDisplay = 1
-      image2 = (covers[Math.floor(Math.random() * Math.floor(covers.length))]);
+    if (imageToDisplay.current === 1) {
+      setImage2(covers.filter(cover => cover !== image1)[Math.floor(Math.random() * Math.floor(covers.length))]);
+      imageToDisplay.current = 2;
+    } else if (imageToDisplay.current === 2) {
+      setImage1(covers.filter(cover => cover !== image2)[Math.floor(Math.random() * Math.floor(covers.length))]);
+      imageToDisplay.current = 1;
     }
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      switchImage(year);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    if(!renderInitialized.current){
+      setImage1(covers[Math.floor(Math.random() * Math.floor(covers.length))]);
+      setImage2(covers.filter(cover => cover !== image1)[Math.floor(Math.random() * Math.floor(covers.length))]);
+    }
 
-  function imageElement(imageURL: string, shouldDisplay: boolean){
-    return(
-    <div className="shot-wrapper" style={{opacity: shouldDisplay ? 1 : 0, transition: 'opacity 0.5s'}}>
-      <img src={ imageURL } style={coverImageStyle}/>
-    </div>
-    )
-  }
-  
-  const returnObject = {
-    html: <div className="year-cover-container" style={coverContainerStyle}>
-    <div className="year-cover-frame" style={coverFrameStyle}></div>
-    { imageElement(image1.shotUrl, imageToDisplay === 1) }
-    { imageElement(image2.shotUrl, imageToDisplay === 2) }
-    <div className="cover-framed-text" style={framedTextStyle}>
-      FRAMED
-    </div>
-    <div className="cover-year-text" style={yearTextStyle}>
-      { year }
-    </div>
-  </div>
+    window.setTimeout(() => { switchImage(year); startSwitchCoverInterval(9000); }, (year - 2020) * 3000);// offset the timer on different covers.
+
+    function startSwitchCoverInterval(timeInterval: number){
+      setSwitchCoverInterval(setInterval(() => {
+        switchImage(year);
+        clearInterval(switchCoverInterval)
+      }, timeInterval));
+    }
+
+    renderInitialized.current = true;
+
+    return () => clearInterval(switchCoverInterval);
+  }, [year, componentId]);
+
+  if ((imageToDisplay.current === 1 && image1 === null) || (imageToDisplay.current === 2 && image2 === null)) {
+    return null;
   }
 
-  return returnObject;
-};
-*/
+  function imageElement(imageURL: string, shouldDisplay: boolean) {
+    return (
+      <div className="shot-wrapper" style={{ ...coverImageStyle, position: 'absolute', opacity: shouldDisplay ? 1 : 0, transition: 'opacity 0.5s' }}>
+        <img src={imageURL} style={coverImageStyle} />
+      </div>
+    );
+  }
+
+  return (
+      <div className="year-cover-container" style={coverContainerStyle}>
+        {imageElement(image1.shotUrl, imageToDisplay.current === 1)}
+        {imageElement(image2.shotUrl, imageToDisplay.current === 2)}
+        <div className="year-cover-frame" style={coverFrameStyle}></div>
+        <div className="cover-framed-text" style={framedTextStyle}>
+          FRAMED
+        </div>
+        <div className="cover-year-text" style={yearTextStyle}>
+          {year}
+        </div>
+      </div>
+    );
+}
