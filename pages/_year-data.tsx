@@ -211,7 +211,9 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
     left: '50%',
     width: '500px',
     transform: 'translate(-50%, 0%)',
-  } 
+  }
+
+  const imageShadowStyle = {filter: "drop-shadow(0px 5px 5px #00000077)"}
 
   return (
     <>
@@ -233,7 +235,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                     { insertFlavourText(flavourText.intro) }
                   </div>
                   <div className="flex flex-col justify-center">
-                    <div className="grid grid-cols-3 gap-4 aspect-square mt-8 md:mt-32">
+                    <div className="grid grid-cols-3 gap-4 aspect-square mt-8 md:mt-32" style = { imageShadowStyle }>
                       {grid.map((item, index) => {
                         return (
                           <a
@@ -275,7 +277,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
               </div>
               <div className="min-h-screen flex flex-col justify-center load transition-all -translate-y-10 opacity-0 duration-500 mb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
-                  <div className="hidden md:grid grid-cols-3">
+                  <div className="hidden md:grid grid-cols-3" style = { imageShadowStyle }>
                     {categoriesImages.map((item, index) => {
                       return (
                         <a
@@ -383,7 +385,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                     </div>
                   </div>
                   <div className="flex flex-col justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4">
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4" style = { imageShadowStyle }>
                       {top10sys.map((item, index) => {
                         // dont render images if it cant complete the row.
                         //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
@@ -442,12 +444,8 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
               >
                 <div className="grid md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
                   <div className="md:flex md:flex-col md:justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4" >
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4" style = { imageShadowStyle } >
                       {top10hof.map((item, index) => {
-                        // dont render images if it cant complete the row.
-                        //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
-                        //  return null;
-                        //}
                         return (
                           <a
                             key={`${item.author}-${index}`}
@@ -565,12 +563,8 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                     </div>
                   </div>
                   <div className="flex flex-col justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4" >
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4" style = { imageShadowStyle }>
                       {mostActiveSys.slice(0, 10).map((item, index) => {
-                        // dont render images if it cant complete the row.
-                        //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
-                        //  return null;
-                        //}
                         return (
                           <a
                             key={`${item.author}-${index}`}
@@ -624,12 +618,8 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
               >
                 <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
                   <div className="md:flex flex-col justify-center">
-                    <div className="grid grid-cols-3 grid-rows-3 gap-4">
+                    <div className="grid grid-cols-3 grid-rows-3 gap-4" style = { imageShadowStyle }>
                       {mostActiveHof.slice(0, 10).map((item, index) => {
-                        // dont render images if it cant complete the row.
-                        //if (top10sys.length%3 !== 0 && index >= top10sys.length - top10sys.length%3 - 1){
-                        //  return null;
-                        //}
                         return (
                           <a
                             key={`${item.author}-${index}`}

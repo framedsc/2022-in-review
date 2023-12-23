@@ -20,7 +20,8 @@ export const Pie = (
         from: "color",
         modifiers: [["darker", 0.2]],
       }}
-      arcLinkLabelsSkipAngle={1}
+      //arcLinkLabelsSkipAngle={6.5}
+      //arcLinkLabelsDiagonalLength={80}
       arcLinkLabel={(d) => `${d.id} (${((d.value / total) * 100).toFixed(2)}%)`}
       enableArcLabels={false}
       arcLinkLabelsTextColor="#DBDFD8" //framed-white
@@ -58,7 +59,7 @@ export const Pie = (
         match: {
           id: item.id,
         },
-        id: index % 2 === 0 ? "dots" : "lines",
+        id: index == props.data.length - 1 ? "clean" : (index % 2 === 0 ? "dots" : "lines"),
       }))}
       {...props}
     />
