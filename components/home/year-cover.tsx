@@ -68,7 +68,7 @@ const framedTextStyle: CSS.Properties = {
   //color: '#dbdfd8',
   fontFamily: "Galano Grotesque Alt",
   letterSpacing: "-0.05em",
-  //filter: 'drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5))',
+  filter: "drop-shadow(0px 5px 5px #00000035)",
 }
 
 const yearTextStyle: CSS.Properties = {
