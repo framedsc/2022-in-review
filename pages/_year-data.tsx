@@ -408,10 +408,12 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.gameName}
+                                  {item.gameName}
                                   <br />
+                                </p>
+                                <p className="text-white/50 font-medium text-sm">
                                   {item.value} shots
-                                  <br />
+                                    <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
                                   {item.author}
@@ -465,10 +467,12 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.gameName}
+                                  {item.gameName}
                                   <br />
+                                </p>
+                                <p className="text-white/50 font-medium text-sm">
                                   {item.value} shots
-                                  <br />
+                                    <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
                                   {item.author}
@@ -586,10 +590,12 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.gameName}
+                                  {item.gameName}
                                   <br />
+                                </p>
+                                <p className="text-white/50 font-medium text-sm">
                                   {item.value} shots
-                                  <br />
+                                    <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
                                   {item.author}
@@ -643,10 +649,12 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
-                                  {index + 1}: {item.gameName}
+                                  {item.gameName}
                                   <br />
+                                </p>
+                                <p className="text-white/50 font-medium text-sm">
                                   {item.value} shots
-                                  <br />
+                                    <br />
                                 </p>
                                 <p className="text-white/75 text-xs text-right">
                                   {item.author}
