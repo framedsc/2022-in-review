@@ -238,7 +238,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                         return (
                           <a
                             key={`${item.author}-${index}`}
-                            className="relative aspect-square"
+                            className="relative aspect-square overflow-hidden"
                             href= { getHOFUrl(item) }
                             target="_blank"
                             rel="noreferrer"
@@ -247,7 +247,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                               <p
                                 className={`
                             absolute bottom-0 left-0 right-0 text-white text-sm p-3
-                            bg-gradient-to-t from-framed-black/75
+                            bg-gradient-to-t from-black/75
                           `}
                               >
                                 {item.gameName}
@@ -280,7 +280,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                       return (
                         <a
                           key={`${item.author}-${index}`}
-                          className="relative aspect-auto"
+                          className="relative overflow-hidden aspect-auto"
                           href= { getHOFUrl(item) }
                           target="_blank"
                           rel="noreferrer"
@@ -289,7 +289,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                             <p
                               className={`
                             absolute bottom-0 left-0 right-0 p-4
-                            bg-gradient-to-t from-framed-black/75
+                            bg-gradient-to-t from-black/75
                           `}
                             >
                               {item.gameName}
@@ -404,7 +404,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0  p-4
-                            bg-gradient-to-t from-framed-black/75
+                            bg-gradient-to-t from-black/75
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
@@ -463,7 +463,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0 p-4
-                            bg-gradient-to-t from-framed-black/75
+                            bg-gradient-to-t from-black/75
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
@@ -586,7 +586,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0  p-4
-                            bg-gradient-to-t from-framed-black/75
+                            bg-gradient-to-t from-black/75
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
@@ -645,7 +645,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                               <div
                                 className={`
                             absolute bottom-0 left-0 right-0 p-4
-                            bg-gradient-to-t from-framed-black/75
+                            bg-gradient-to-t from-black/75
                           `}
                               >
                                 <p className="text-framed-white font-bold text-xs md:text-base">
