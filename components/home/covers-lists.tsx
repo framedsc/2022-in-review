@@ -90,7 +90,9 @@ export const covers2021 = [
   {"shotUrl": "wrapped-images/covers/2021/1620769861_1.jpg", "author": "242345941317713920"},
   {"shotUrl": "wrapped-images/covers/2021/1618943190_ACValhalla-2021-04-10-12-30-41-reduzed.jpg", "author": "96751160416825344"},
   {"shotUrl": "wrapped-images/covers/2021/1618321155_DemonsSouls04x.jpg", "author": "325964388844437504"},
+  {"shotUrl": "wrapped-images/covers/2021/1620667136_Red_Dead_Redemption_2_Screenshot_2021.05.10_-_20.06.39.612.jpg", "author": "389770058685087744"},
   //extra
+  {"shotUrl": "wrapped-images/covers/2021/1638456438_MirrorsEdgeCatalyst_2021-12-02_01-11-01.jpg", "author": "301881785426378762"},
   {"shotUrl": "wrapped-images/covers/2021/1624264203_Ratchet___Clank__Rift_Apart_20210616145649.jpg", "author": "253111719608451073"},
   {"shotUrl": "wrapped-images/covers/2021/1636725908_ACU_2021-11-12_02-46-39.jpg", "author": "261041102562394113"},
   {"shotUrl": "wrapped-images/covers/2021/1638260784_ACValhalla_2021_11_26_11_45_11_648.jpg", "author": "229038157415317504"},

@@ -82,7 +82,8 @@ const yearTextStyle: CSS.Properties = {
   textAlign: 'center',
   transform: 'translate(-50%, -50%)',
   opacity: '80%',
-  mixBlendMode: 'screen',
+  //mixBlendMode: 'screen',
+  filter: "drop-shadow(0px 5px 5px #00000035)",
   fontFamily: "'Galano Grotesque Alt (Numbers)', 'AtkinsonHyperlegible', 'HelveticaNeue', 'Helvetica', 'Arial', 'sans-serif'",
   //color: '#dbdfd8',
 }
@@ -108,11 +109,8 @@ export function YearCover(year: number) {
   const [switchCoverInterval, setSwitchCoverInterval] = useState<any | null>(null);
   const imageToDisplay = useRef(1);
   const renderInitialized = useRef(false);
-  const componentId = useRef(`YearCover_${Math.random().toString(36).substr(2, 9)}`);
 
   function switchImage(year: number) {
-    console.log(`Switching cover from ${year} in component ${componentId.current}`);
-
     if (imageToDisplay.current === 1) {
       setImage2(covers.filter(cover => cover !== image1)[Math.floor(Math.random() * Math.floor(covers.length))]);
       imageToDisplay.current = 2;
@@ -128,7 +126,8 @@ export function YearCover(year: number) {
       setImage2(covers.filter(cover => cover !== image1)[Math.floor(Math.random() * Math.floor(covers.length))]);
     }
 
-    window.setTimeout(() => { switchImage(year); startSwitchCoverInterval(9000); }, (year - 2020) * 3000);// offset the timer on different covers.
+    const changeCoversEveryMs: number = 5000;
+    window.setTimeout(() => { switchImage(year); startSwitchCoverInterval(3 * changeCoversEveryMs); }, (year - 2020) * changeCoversEveryMs);// offset the timer on different covers.
 
     function startSwitchCoverInterval(timeInterval: number){
       setSwitchCoverInterval(setInterval(() => {
@@ -140,7 +139,7 @@ export function YearCover(year: number) {
     renderInitialized.current = true;
 
     return () => clearInterval(switchCoverInterval);
-  }, [year, componentId]);
+  }, [year]);
 
   if ((imageToDisplay.current === 1 && image1 === null) || (imageToDisplay.current === 2 && image2 === null)) {
     return null;
@@ -155,7 +154,7 @@ export function YearCover(year: number) {
   }
 
   return (
-      <div className="year-cover-container" style={coverContainerStyle}>
+      <a className="year-cover-container" href={year.toString()} style={coverContainerStyle}>
         {imageElement(image1.shotUrl, imageToDisplay.current === 1)}
         {imageElement(image2.shotUrl, imageToDisplay.current === 2)}
         <div className="year-cover-frame" style={coverFrameStyle}></div>
@@ -165,6 +164,6 @@ export function YearCover(year: number) {
         <div className="cover-year-text" style={yearTextStyle}>
           {year}
         </div>
-      </div>
+      </a>
     );
 }
