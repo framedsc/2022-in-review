@@ -21,10 +21,6 @@ interface CalendarPieTooltip extends CalendarTooltipProps {
   };
 }
 
-const getHOFUrl = (item: { epochTime: any; }) => {
-  return `https://framedsc.com/HallOfFramed/?imageId=${item.epochTime}`
-}
-
 const CustomTooltip = (data: CalendarTooltipProps) => {
   return (
     <div className="bg-framed-black text-framed-white py-1 px-3 rounded-md shadow-md">
@@ -75,6 +71,10 @@ const insertFlavourText = (text: any[]) => {
 };
 
 export default function WrapYear(year: number, flavourText: { intro: any; top10sys: any; top10hof: any; busysys: any; busyhof: any; }) {
+  const getHOFUrl = (item: {gameName: any; epochTime: any; }) => {
+    return `https://framedsc.com/HallOfFramed/?title=${item.gameName}&after=${year}-01-01&before=${year+1}-01-01&imageId=${item.epochTime}`
+  }
+
   const [visible, setVisible] = useState(false);
   const [calendarDatum, setCalendarDatum] = useState<CalendarTooltipProps>();
   const [data, setData] = useState({sys: new Array<IShot>(), hof: new Array<IShot>(), authors: new Array<object>()});
