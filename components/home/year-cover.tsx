@@ -68,7 +68,7 @@ const framedTextStyle: CSS.Properties = {
   opacity: '90%',
   //mix-blend-mode: 'screen',
   //color: '#dbdfd8',
-  fontFamily: "Galano Grotesque Alt",
+  fontFamily: "Galano Grotesque Alt !important",
   letterSpacing: "-0.05em",
   filter: "drop-shadow(0px 5px 5px #00000035)",
 }
@@ -82,7 +82,7 @@ const yearTextStyle: CSS.Properties = {
   textAlign: 'center',
   transform: 'translate(-50%, -50%)',
   opacity: '80%',
-  //mixBlendMode: 'screen',
+  mixBlendMode: 'screen',
   filter: "drop-shadow(0px 5px 5px #00000035)",
   fontFamily: "'Galano Grotesque Alt (Numbers)', 'AtkinsonHyperlegible', 'HelveticaNeue', 'Helvetica', 'Arial', 'sans-serif'",
   //color: '#dbdfd8',
