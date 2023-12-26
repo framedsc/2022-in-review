@@ -158,12 +158,12 @@ export function YearCover(year: number) {
         {imageElement(image1.shotUrl, imageToDisplay.current === 1)}
         {imageElement(image2.shotUrl, imageToDisplay.current === 2)}
         <div className="year-cover-frame" style={coverFrameStyle}></div>
-        <div className="cover-framed-text" style={framedTextStyle}>
+        <h1 className="cover-framed-text" style={framedTextStyle}>
           FRAMED
-        </div>
-        <div className="cover-year-text" style={yearTextStyle}>
+        </h1>
+        <h2 className="cover-year-text" style={yearTextStyle}>
           {year}
-        </div>
+        </h2>
       </a>
     );
 }
