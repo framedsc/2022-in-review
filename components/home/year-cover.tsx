@@ -61,7 +61,7 @@ const framedTextStyle: CSS.Properties = {
   position: 'absolute',
   top: '13%',
   left: '50%',
-  fontWeight: 'bold',
+  fontWeight: 700,
   fontSize: `19.5cqi`,
   textAlign: 'center',
   transform: 'translate(-50%, -50%)',

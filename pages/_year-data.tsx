@@ -232,6 +232,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                     <p>
                       Welcome to Framed&apos;s {year} in Review!
                     </p>
+                    <br />
                     { insertFlavourText(flavourText.intro) }
                   </div>
                   <div className="flex flex-col justify-center">

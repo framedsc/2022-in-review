@@ -3,49 +3,59 @@ import WrapYear from "./_year-data";
 const year: number = 2023;
 
 const flavourText = {
-  intro: [`We wanted to take a moment to reflect on some of the most
-  stunning virtual photography and video game screenshots
-  that the Framed community has produced throughout ${year}.`,
-  `From breathtaking landscapes in open-world games to
-  intense action shots in first-person shooters, our
-  community has truly outdone itself in capturing the beauty
-  and emotion of these digital worlds. Join us as we look
-  back at some of the most memorable moments and incredible
-  imagery of the past year.`],
-  top10sys: [`As we wrap up ${year}, it's time to take a look back
-  at the most captivating shots of the year in
-  Framed's Share Your Shot Discord channel. From the
-  snow-capped mountains of Skyrim to the neon-lit
-  cityscapes of Cyberpunk 2077, these shots are the
-  culmination of our community's creativity.`],
-  top10hof: [`Each shot submitted has a chance to make it to the Hall
-  of Framed - our curated collection of shots voted for by
-  the Framed community. We saw some familiar titles hold
-  their position at the top, as well as a few newer titles
-  breaking through to claim their spot in the top 10 games
-  making it into the Hall of Framed for ${year}.`],
-  busysys: [`On our busiest day of the year, one day after the launch
-  of the martial-arts title SIFU, our community posted the
-  highest number of shots in a single day for the entire
-  year. With a whopping 96 shots posted in a single day,
-  the Framed community flooded the server with all manner
-  of impressive shots. With punch-em-up title SIFU
-  claiming the top spot at 13 shots at 13.54% of the
-  day's shots, followed closely by God of War & No
-  Man's Sky taking the second and third place slots
-  respectively. The busiest day also saw some lesser shot
-  titles make an appearance with Bloodborne, Twin Mirror,
-  and Mosaic also making appearances.`],
-  busyhof: [`It should come as no surprise that the busiest day for
-  the Hall of Framed in ${year} features some of our most
-  familiar and favorite titles. Red Dead Redemption 2
-  etched out the top spot with four different shots
-  gaining enough votes to break into the curated gallery,
-  followed quickly by server-mainstay title Cyberpunk
-  2077. Giant Squid & Annapurna Interactive's The
-  Pathless makes a surprising entry as the third highest
-  entry, showcasing the game's visuals from a whole
-  new angle.`],
+  intro: [`Another year, another Framed in Review! This year saw our
+  fantastic community explore some of the biggest game releases to date
+  with epic adventures like Baldur’s Gate 3, re-imagined horrors among the stars
+  in the Dead Space Remake, and brand new additions to existing titles like
+  Cyberpunk 2077’s DLC - Phantom Liberty. From sequels to updates, new IP’s
+  to remakes, we’ve been spoiled for choice in 2023, so let’s go over what
+  captivated the Framed community throughout the year.
+  `],
+  top10sys: [`Coming in strong and surprising no one, Cyberpunk 2077
+  continues to dominate the Share Your Shot channel with a whopping
+  1624 shots shared by the community in 2023, no doubt spurred on
+  by the recent game work and DLC content released this year.
+  Hogwarts legacy managed to conjure its way into the second highest position
+  with 987 shots thanks to its vibrant imagining of the Hogwarts scenery and
+  impressively lush landscapes, followed swiftly by this year’s biggest
+  RPG offering and GOTY winner at this year’s Game Awards.
+  With 575 Baldurs Gate 3 shots earning it third place in the rankings,
+  we can be assured that the internet will never be lacking on portraits
+  of Astarion, Shadowheart, and Lae’zel anytime soon.
+  `],
+  top10hof: [`Among the 15000+ shots of 2023, the community reacted and
+  voted for their favorites to earn their esteemed place within the
+  Hall of Framed, Unsurprisingly Cyberpunk once again claims the
+  top spot this year, through sheer volume alone these dystopian vistas and
+  neon-soaked portraits have claimed the title as the game with
+  the highest number of shots entering the HOF this year.
+  And to mirror the same pattern of the Share Your Shot trends,
+  so too has Hogwarts snuck in at second place with its mystical
+  forests spellbinding surroundings. Perhaps the most surprising
+  change this year is that the psychological thriller Alan Wake 2,
+  a late release into the year no less, has managed to bag third place with an
+  impressive 81 entries into the HOF in the space of only
+  two months since it was released.
+  `],
+  busysys: [`February 3rd 2023 was by far one of the busiest days for
+  overall shots posted, which is slightly unusual given nothing released on this day.
+  For some reason the collective creative mind of the community had instead
+  come together to launch a barrage of shots all at once, with the Dead Space Remake
+  taking front and center among the flurry of submissions.
+  Member’s were also exploring the neon lights of Need For Speed,
+  Ghost of Tsushima’s rolling grass hills, and the warzones of Battlefield 5.
+  Perhaps the most unusual entry on this day was a collection of Garry’s Mod shots
+  in which member SammirLim explored a surrealist take on the popular sandbox title. 
+  `],
+  busyhof: [`The HOF is a fickle beast, deciding on a whim who to elevate and
+  who gets left within the chambers of the Share Your Shot channel.
+  Almost as if in response to the number of shots coming in on February 3rd 2023,
+  the Hall of Framed decided to honor its highest number of people in a single day
+  with a shocking 36 shots finding their place in the gallery. From the
+  high octane driving scenes of Need for Speed & Forza 5, to the unrelenting horrors
+  in space with Alien: Isolation & Dead Space, this day saw a wide variety of titles
+  sneaking into the hall to take their place.
+  `],
 }
 
 
