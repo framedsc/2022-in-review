@@ -151,7 +151,7 @@ export function YearCover(year: number) {
   function imageElement(imageURL: string, shouldDisplay: boolean) {
     return (
       <div className="shot-wrapper" style={{ ...coverImageStyle, position: 'absolute', opacity: shouldDisplay ? 1 : 0, transition: 'opacity 0.5s' }}>
-        <img src={imageURL} style={coverImageStyle} />
+        <img src={imageURL} loading="lazy" style={coverImageStyle} />
       </div>
     );
   }
