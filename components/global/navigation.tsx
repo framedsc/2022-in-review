@@ -40,7 +40,7 @@ export const Navigation = () => {
               </div>
             </Link>
           </li>
-          <Link href="/framed-wrapped/" >
+          <Link href="/" >
             <img src="recap-nsub-logo.svg" style={ recapLogoStyle }/>
           </Link>
         </ul>
