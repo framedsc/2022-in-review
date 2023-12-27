@@ -6,22 +6,15 @@ import CSS from 'csstype';
 
 const recapLogoStyle: CSS.Properties = {
   position: 'relative',
-  width: '125px',
+  width: '15vh',
 }
 
 export const Navigation = () => {
   const router = useRouter();
 
-  const aYearofFramedStyle: CSS.Properties = {
-    fontWeight: 'bold',
-    //textAlign: 'center',
-    fontSize: '20px',
-    opacity: '90%',
-  };
-
   return (
     <nav className="w-full fixed top-0 py-3 bg-black/30 backdrop-blur-lg border-b border-b-white/10 shadow-md text-white z-50">
-      <Container>
+      <div style={ {marginLeft: '5vw'} }>
         <ul className="flex items-center">
           <li>
             <Link
@@ -29,7 +22,7 @@ export const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="w-8 h-8 mr-4">
+              <div className="framed logo" style = { {width: '4vh', marginRight: '1.5vh'} }>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   x="0"
@@ -47,14 +40,11 @@ export const Navigation = () => {
               </div>
             </Link>
           </li>
-          <Link
-            href="/framed-wrapped/"
-            style ={ aYearofFramedStyle }
-          >
+          <Link href="/framed-wrapped/" >
             <img src="recap-nsub-logo.svg" style={ recapLogoStyle }/>
           </Link>
         </ul>
-      </Container>
+      </div>
     </nav>
   );
 };

@@ -10,17 +10,20 @@ const coverFrameStyle: CSS.Properties = {
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'space-around',
-  marginBottom: "30px",
+  transform: 'translate(0%, -50%%)',
+  top: '50%',
+  marginBottom: "3vh",
 }
 
 const recapLogoStyle: CSS.Properties = {
   position: 'relative',
-  marginTop: '100px',
-  marginBottom: '40px',
+  marginTop: '10vh',
+  marginBottom: '2vh',
   padding: '0px 20px',
   left: '50%',
-  width: '500px',
+  width: '45vh',
   transform: 'translate(-50%, 0%)',
+  overflow: 'auto',
 }
 
 const Home = () => {
