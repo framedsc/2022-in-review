@@ -110,7 +110,8 @@
   @font-face {
     font-family: "Galano Grotesque Alt";
     src: url("/fonts/Galano-Grotesque/GalanoGrotesqueAlt-SemiBold.woff2") format("woff2"),
-         url("/fonts/Galano-Grotesque/GalanoGrotesqueAlt-SemiBold.woff") format("woff");
+         url("/fonts/Galano-Grotesque/GalanoGrotesqueAlt-SemiBold.woff") format("woff"),
+         url("/fonts/Galano-Grotesque/GalanoGrotesqueAlt-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
