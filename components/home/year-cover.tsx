@@ -61,7 +61,7 @@ const coverFrameStyle: CSS.Properties = {
 
 const framedTextStyle: CSS.Properties = {
   position: 'absolute',
-  top: '13%',
+  top: '10.5%',
   left: '50%',
   fontStyle: 'normal !important',
   fontWeight: 700,
