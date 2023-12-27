@@ -42,6 +42,8 @@ const coverImageStyle: CSS.Properties = {
   display: 'block',
   objectFit: 'cover',
   aspectRatio: 'inherit',
+  transform: 'translate(-25%, 0)', // So the images get centered if the AR gets thinnier, dont judge.
+  left: '50%',
 }
 
 const coverFrameStyle: CSS.Properties = {
