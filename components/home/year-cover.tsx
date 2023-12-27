@@ -127,7 +127,7 @@ export function YearCover(year: number) {
       setImage2(covers.filter(cover => cover !== image1)[Math.floor(Math.random() * Math.floor(covers.length))]);
     }
 
-    const changeCoversEveryMs: number = 5000;
+    const changeCoversEveryMs: number = 7500;
     window.setTimeout(() => { switchImage(year); startSwitchCoverInterval(3 * changeCoversEveryMs); }, (year - 2020) * changeCoversEveryMs);// offset the timer on different covers.
 
     function startSwitchCoverInterval(timeInterval: number){
