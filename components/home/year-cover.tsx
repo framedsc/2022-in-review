@@ -63,7 +63,7 @@ const coverFrameStyle: CSS.Properties = {
 
 const framedTextStyle: CSS.Properties = {
   position: 'absolute',
-  top: '10.5%',
+  top: '12.5%',
   left: '50%',
   fontStyle: 'normal',
   fontWeight: 700,
@@ -71,7 +71,7 @@ const framedTextStyle: CSS.Properties = {
   textAlign: 'center',
   transform: 'translate(-50%, -50%)',
   opacity: '90%',
-  fontFamily: "Galano Grotesque Alt",
+  //fontFamily: "Galano Grotesque Alt",
   letterSpacing: "-0.05em",
   filter: "drop-shadow(0px 5px 5px #00000035)",
 }
@@ -161,7 +161,7 @@ export function YearCover(year: number) {
         {imageElement(image1.shotUrl, imageToDisplay.current === 1)}
         {imageElement(image2.shotUrl, imageToDisplay.current === 2)}
         <div className="year-cover-frame" style={coverFrameStyle}></div>
-        <h1 className="cover-framed-text" style={framedTextStyle}>
+        <h1 className="text cover-framed-text font-galanogrotesque" style={framedTextStyle}>
           FRAMED
         </h1>
         <h2 className="cover-year-text" style={yearTextStyle}>

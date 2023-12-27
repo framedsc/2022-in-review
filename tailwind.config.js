@@ -15,6 +15,12 @@ module.exports = {
       width: {
         "h-screen": "100vh",
       },
+      fontFamily: {
+        galanogrotesque: ['GalanoGrotesque'],
+        galanogrotesquealt: ['Galano Grotesque Alt'],
+        galanogrotesquealtnumbers: ['Galano Grotesque Alt (Numbers)'],
+        atkinson: ['AtkinsonHyperlegible'],
+      }
     },
   },
   plugins: [],
