@@ -21,13 +21,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <meta property="og:title" content="A year of FRAMED"/>
         <meta property="og:description" content="A collection of each year's summary of FRAMED screenshots, guides, and activity."/>
-        <meta property="og:image" content="twitter-card.jpg"/>	
+        <meta property="og:image" content={`${basePath}/twitter-card.jpg`}/>	
         <link rel="apple-touch-icon" href="logo512.jpg" />
 
-        <meta name="twitter:card" content="twitter-card.jpg" />
+        <meta name="twitter:card" content={`${basePath}/twitter-card.jpg`} />
         <meta name="twitter:title" content="A year of FRAMED" />
         <meta name="twitter:description" content="A collection of each year's summary of FRAMED screenshots, guides, and activity." />
-        <meta name="twitter:image" content="twitter-card.jpg" />
+        <meta name="twitter:image" content={`${basePath}/twitter-card.jpg`} />
       </Head>
       <Navigation />
       <Component {...pageProps} />
