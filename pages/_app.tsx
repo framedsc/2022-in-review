@@ -7,7 +7,7 @@ import { basePath } from '../next.config';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div style={{ overflow: "hidden", position: "relative", width: "100%"}}>
+    <div style={{ width: "100%"}}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
