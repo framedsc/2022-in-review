@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, RefObject } from "react";
 import CSS from 'csstype';
 import { IShot } from "@types";
 import { covers2021, covers2022, covers2023 } from "./covers-lists";
+import { basePath } from '../../next.config';
 
 const getCovers = (year: number) => {
   switch(year) { 
@@ -151,13 +152,13 @@ export function YearCover(year: number) {
   function imageElement(imageURL: string, shouldDisplay: boolean) {
     return (
       <div className="shot-wrapper" style={{ ...coverImageStyle, position: 'absolute', opacity: shouldDisplay ? 1 : 0, transition: 'opacity 0.5s' }}>
-        <img src={imageURL} loading="lazy" style={coverImageStyle} />
+        <img src={`${basePath}/${imageURL}`} loading="lazy" style={coverImageStyle} />
       </div>
     );
   }
 
   return (
-      <a className="year-cover-container" href={year.toString()} style={coverContainerStyle}>
+      <a className="year-cover-container" href={`${basePath}/${year.toString()}`} style={coverContainerStyle}>
         {imageElement(image1.shotUrl, imageToDisplay.current === 1)}
         {imageElement(image2.shotUrl, imageToDisplay.current === 2)}
         <div className="year-cover-frame" style={coverFrameStyle}></div>

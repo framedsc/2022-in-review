@@ -11,6 +11,7 @@ import {
   LoadingSection,
 } from "@components/experience-fragments";
 import CSS from 'csstype';
+import { basePath } from '../next.config';
 
 import { getHofAuthors, getHofImages, getSysImages } from './api/request';
 import { addProperties, normalizeData } from '../util/utils';
@@ -227,7 +228,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
               <div className="min-h-screen md:flex md:items-center load transition-all -translate-y-10 opacity-0 duration-500 mb-8">
                 <div className="md:grid md:grid-cols-2 md:gap-x-16">
                   <div className="flex flex-col justify-center">
-                    <img src="recap-wsub-logo.svg" style={ recapLogoStyle }/>
+                    <img src={`${basePath}/recap-wsub-logo.svg`} style={ recapLogoStyle }/>
                     <br />
                     <p>
                       Welcome to Framed&apos;s {year} in Review!

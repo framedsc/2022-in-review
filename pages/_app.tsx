@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { Footer, Navigation } from "@components/global";
 import Head from "next/head";
 import '../public/fonts/stylesheet.css';
+import { basePath } from '../next.config';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -33,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <picture>
             <img
               className="absolute top-0 left-0 object-cover"
-              src="wrapped-images/Topography.svg"
+              src={`${basePath}/wrapped-images/Topography.svg`}
               alt=""
               style = {{zIndex: "-1", objectFit: "cover", minHeight: "200%"}}
             />

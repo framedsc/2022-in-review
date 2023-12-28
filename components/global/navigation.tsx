@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { Container } from "./container";
 import CSS from 'csstype';
+import { basePath } from '../../next.config';
 
 const recapLogoStyle: CSS.Properties = {
   position: 'relative',
@@ -41,7 +42,7 @@ export const Navigation = () => {
             </Link>
           </li>
           <Link href="/" >
-            <img src="recap-nsub-logo.svg" style={ recapLogoStyle }/>
+            <img src={`${basePath}/recap-nsub-logo.svg`} style={ recapLogoStyle }/>
           </Link>
         </ul>
       </div>

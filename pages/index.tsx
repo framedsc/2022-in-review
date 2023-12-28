@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import CSS from 'csstype';
+import { basePath } from '../next.config';
 
 import { YearCover} from "@components/home";
 
@@ -33,7 +34,7 @@ const Home = () => {
         <title>A year of FRAMED</title>
       </Head>
 
-      <img src="recap-wsub-logo.svg" style={ recapLogoStyle }/>
+      <img src={`${basePath}/recap-wsub-logo.svg`} style={ recapLogoStyle }/>
 
       <div className='Covers wrapper' style={ coverFrameStyle }>
         { YearCover(2023) }
