@@ -23,28 +23,27 @@ const getCovers = (year: number) => {
 
 const coverContainerStyle: CSS.Properties = {
   position: 'relative',
-  //width: '100%',
-  //max-width: '600px', /* Set your desired max-width */
   margin: '15px',
-  //width: '480px',
-  height: '70vh',
-  //height: '640px',
-  maxHeight: '1280px',
-  aspectRatio: 3 / 4,
+
+  // With this we have the 3 / 4 ratio.
+  width: '30%',
+  paddingBottom: '40%',
+
+  height: '0',
+  minWidth: '300px',
+  minHeight: '400px',
   overflow: 'hidden',
   textAlign: 'center',
-  //transform: 'translate(-50%, -50%)',
-  //left: '50%',
   filter: 'drop-shadow(0 5px 0.75rem rgba(0, 0, 0, 0.5))',
 };
 
 const coverImageStyle: CSS.Properties = {
-  minHeight: '100%',
-  display: 'block',
-  objectFit: 'cover',
-  aspectRatio: 'inherit',
-  transform: 'translate(-25%, 0)', // So the images get centered if the AR gets thinnier, dont judge.
-  left: '50%',
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center',
+    position: 'absolute',
+    top: 0, left: 0
 }
 
 const coverFrameStyle: CSS.Properties = {
