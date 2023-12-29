@@ -129,6 +129,9 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
   data.hof.forEach(item => item as IShot);
   data.sys.forEach(item => item as IShot);
 
+  //console.log("hof entries", data.hof.length);
+  //console.log("hof game entries", new Set(data.hof.map(entry => entry.gameName)).size);
+
   if (!dataAvailable) {
     return <LoadingSection />;
   }

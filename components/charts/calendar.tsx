@@ -5,7 +5,7 @@ export const Calendar = (props: Omit<CalendarSvgProps, "height" | "width">) => {
   return (
     <ResponsiveCalendar
       monthSpacing={22}
-      emptyColor="#eeeeee"
+      emptyColor="#272727"
       colors={[
         "#003f5c",
         "#444e86",
@@ -15,6 +15,8 @@ export const Calendar = (props: Omit<CalendarSvgProps, "height" | "width">) => {
         "#ffa600",
       ]}
       margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+      dayBorderColor="#272727"
+      monthBorderColor="#272727"
       yearSpacing={40}
       dayBorderWidth={2}
       legends={[
