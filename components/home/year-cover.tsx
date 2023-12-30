@@ -23,15 +23,15 @@ const getCovers = (year: number) => {
 
 const coverContainerStyle: CSS.Properties = {
   position: 'relative',
-  margin: '15px',
+  margin: '4% 0',
 
   // With this we have the 3 / 4 ratio.
   width: '30%',
   paddingBottom: '40%',
 
   height: '0',
-  minWidth: '360px',
-  minHeight: '480px',
+  minWidth: `${typeof window !== 'undefined' && window.innerWidth / window.innerHeight < 1? window.innerWidth * 0.93 : 360}px`,
+  minHeight: `${typeof window !== 'undefined' && window.innerWidth / window.innerHeight < 1? window.innerWidth * 4/3 * 0.93 : 480}px`,
   overflow: 'hidden',
   textAlign: 'center',
   filter: 'drop-shadow(0 5px 0.75rem rgba(0, 0, 0, 0.5))',
@@ -48,10 +48,10 @@ const coverImageStyle: CSS.Properties = {
 
 const coverFrameStyle: CSS.Properties = {
   position: 'absolute',
-  top: '20px', /* Adjust top position */
-  left: '20px', /* Adjust left position */
-  right: '20px', /* Adjust right position */
-  bottom: '20px', /* Adjust bottom position */
+  top: '3.5cqw', /* Adjust top position */
+  left: '3.5cqw', /* Adjust left position */
+  right: '3.5cqw', /* Adjust right position */
+  bottom: '3.5cqw', /* Adjust bottom position */
   backdropFilter: 'blur(20px) brightness(115%) saturate(120%)',
   maskComposite: 'exclude',
   WebkitMaskComposite: 'exclude',
