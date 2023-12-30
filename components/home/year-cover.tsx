@@ -30,8 +30,8 @@ const coverContainerStyle: CSS.Properties = {
   paddingBottom: '40%',
 
   height: '0',
-  minWidth: '300px',
-  minHeight: '400px',
+  minWidth: '360px',
+  minHeight: '480px',
   overflow: 'hidden',
   textAlign: 'center',
   filter: 'drop-shadow(0 5px 0.75rem rgba(0, 0, 0, 0.5))',
