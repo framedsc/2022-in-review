@@ -18,11 +18,10 @@ const coverFrameStyle: CSS.Properties = {
 
 const recapLogoStyle: CSS.Properties = {
   position: 'relative',
-  marginTop: '10vh',
-  marginBottom: '2vh',
+  margin: '10vh 0 4vh',
   padding: '0px 20px',
   left: '50%',
-  width: '45vh',
+  width: '40vh',
   transform: 'translate(-50%, 0%)',
   overflow: 'auto',
 }

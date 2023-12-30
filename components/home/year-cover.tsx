@@ -21,21 +21,29 @@ const getCovers = (year: number) => {
  } 
 }
 
-const coverContainerStyle: CSS.Properties = {
-  position: 'relative',
-  margin: '4% 0',
+function getCoverContainerStyle() {
+  const coverContainerStyle: CSS.Properties = {
+    position: 'relative',
+    marginBottom: `${typeof window !== 'undefined' && window.innerWidth / window.innerHeight < 1 ? 4 : 1}%`,
+  
+    height: '0',
+    minWidth: '360px',
+    minHeight: '480px',
+    overflow: 'hidden',
+    textAlign: 'center',
+    filter: 'drop-shadow(0 5px 0.75rem rgba(0, 0, 0, 0.5))',
+  };
 
-  // With this we have the 3 / 4 ratio.
-  width: '30%',
-  paddingBottom: '40%',
+  if (typeof window !== 'undefined'){
+    const windowAR = window.innerWidth / window.innerHeight;
+    const coverAR = 4/3;
 
-  height: '0',
-  minWidth: `${typeof window !== 'undefined' && window.innerWidth / window.innerHeight < 1? window.innerWidth * 0.93 : 360}px`,
-  minHeight: `${typeof window !== 'undefined' && window.innerWidth / window.innerHeight < 1? window.innerWidth * 4/3 * 0.93 : 480}px`,
-  overflow: 'hidden',
-  textAlign: 'center',
-  filter: 'drop-shadow(0 5px 0.75rem rgba(0, 0, 0, 0.5))',
-};
+    coverContainerStyle['minWidth'] = `${windowAR < 1 ? window.innerWidth * 0.93 : window.innerHeight * 1/coverAR * 0.8}px`;
+    coverContainerStyle['minHeight'] = `${windowAR < 1 ? window.innerWidth * coverAR * 0.93 : window.innerHeight * 0.8}px`;
+  }
+
+  return coverContainerStyle;
+}
 
 const coverImageStyle: CSS.Properties = {
     width: '100%',
@@ -157,7 +165,7 @@ export function YearCover(year: number) {
   }
 
   return (
-      <a className="year-cover-container" href={`${basePath}/${year.toString()}`} style={coverContainerStyle}>
+      <a className="year-cover-container" href={`${basePath}/${year.toString()}`} style={getCoverContainerStyle()}>
         {imageElement(image1.shotUrl, imageToDisplay.current === 1)}
         {imageElement(image2.shotUrl, imageToDisplay.current === 2)}
         <div className="year-cover-frame" style={coverFrameStyle}></div>
