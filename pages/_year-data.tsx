@@ -122,8 +122,8 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
     "Top 10 Games in the Hall of Framed": useRef<HTMLDivElement>(null),
     "Most Active Day in Share Your Shot": useRef<HTMLDivElement>(null),
     "Most Active Day in the Hall of Framed": useRef<HTMLDivElement>(null),
-    "Daily Hall of Framed": useRef<HTMLDivElement>(null),
     "Daily Share Your Shot": useRef<HTMLDivElement>(null),
+    "Daily Hall of Framed": useRef<HTMLDivElement>(null),
   };
 
   data.hof.forEach(item => item as IShot);
@@ -218,6 +218,8 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
   }
 
   const imageShadowStyle = {filter: "drop-shadow(0px 5px 5px #00000077)"}
+
+  const isWindowARVertical = typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1;
 
   return (
     <>
@@ -708,18 +710,25 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   </div>
                 </div>
               </div>
-              <div className="calendar h-auto grid grid-rows-2 gap-x-8 md:overflow-hidden" >
+              <div
+              className="calendar h-auto grid grid-rows-2 gap-x-8 md:overflow-hidden"
+              style={{
+                width: isWindowARVertical ? 'auto' : '300%',
+                marginLeft: isWindowARVertical ? 'auto' : '-100%',
+                padding: isWindowARVertical ? 0 : '20px',
+              }}
+              >
                 <div
                   className="flex flex-col items-center"
                   style={{
-                    height: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerHeight * 1.5 : window.innerHeight * 0.5,
-                    width: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
+                    height: isWindowARVertical ? '150vh' : '50vh',
+                    width: isWindowARVertical ? '70vw' : '80vw',
                     flex: 1,
                     margin: "auto",
                   }}
                   ref={segments["Daily Share Your Shot"]}
                 >
-                  <h3 className="font-semibold text-3xl">
+                  <h3 className="font-semibold text-3xl text-center">
                     Share Your Shot Calendar in {year}
                   </h3>
                   <Calendar
@@ -736,14 +745,14 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                 <div
                   className="flex flex-col items-center"
                   style={{
-                    height: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerHeight * 1.5 : window.innerHeight * 0.5,
-                    width: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
+                    height: isWindowARVertical ? '150vh' : '50vh',
+                    width: isWindowARVertical ? '70vw' : '80vw',
                     flex: 1,
                     margin: "auto",
                   }}
                   ref={segments["Daily Hall of Framed"]}
                 >
-                  <h3 className="font-semibold text-3xl">
+                  <h3 className="font-semibold text-3xl text-center">
                     Hall of Framed Calendar in {year}
                   </h3>
                   <Calendar
