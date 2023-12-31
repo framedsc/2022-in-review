@@ -21,17 +21,20 @@ export const Calendar = (props: Omit<CalendarSvgProps, "height" | "width">) => {
       dayBorderWidth={2}
       legends={[
         {
-          anchor: "top",
-          direction: "row",
+          anchor: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? 'left' : 'top',
+          translateX: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? 0 : -50,
+          direction: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? 'column' : 'row',
           itemCount: 8,
           itemWidth: 42,
-          itemHeight: 0,
+          itemHeight: 30,
           itemsSpacing: 14,
           itemDirection: "right-to-left",
           itemTextColor: "#DBDFD8", //framed-white
         },
       ]}
       theme={{ textColor: "#DBDFD8" }} //framed-white
+      direction={typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? 'vertical' : 'horizontal'}
+      align={typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? 'right' : 'center'}
       {...props}
     />
   );

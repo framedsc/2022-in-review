@@ -708,12 +708,18 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   </div>
                 </div>
               </div>
-              <div className="calendar h-screen grid grid-rows-2 gap-x-8 md:overflow-hidden">
+              <div className="calendar h-auto grid grid-rows-2 gap-x-8 md:overflow-hidden" >
                 <div
-                  className="flex flex-col items-center w-h-screen md:w-full"
+                  className="flex flex-col items-center"
+                  style={{
+                    height: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerHeight * 1.5 : window.innerHeight * 0.5,
+                    width: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
+                    flex: 1,
+                    margin: "auto",
+                  }}
                   ref={segments["Daily Share Your Shot"]}
                 >
-                  <h3 className="font-semibold text-3xl pl-20">
+                  <h3 className="font-semibold text-3xl">
                     Share Your Shot Calendar in {year}
                   </h3>
                   <Calendar
@@ -728,10 +734,16 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   />
                 </div>
                 <div
-                  className="flex flex-col items-center w-h-screen md:w-full"
+                  className="flex flex-col items-center"
+                  style={{
+                    height: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerHeight * 1.5 : window.innerHeight * 0.5,
+                    width: typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1 ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
+                    flex: 1,
+                    margin: "auto",
+                  }}
                   ref={segments["Daily Hall of Framed"]}
                 >
-                  <h3 className="font-semibold text-3xl pl-20">
+                  <h3 className="font-semibold text-3xl">
                     Hall of Framed Calendar in {year}
                   </h3>
                   <Calendar
