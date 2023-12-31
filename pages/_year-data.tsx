@@ -63,7 +63,7 @@ const ModalContent = ({ data }: { data: CalendarTooltipProps }) => {
 };
 
 const insertFlavourText = (text: any[]) => {
-  const paragraphs = text.map((paragraph, index) => <> {index !== text.length -1 ? <br /> : null } <p> {paragraph} </p> </>);
+  const paragraphs = text.map((paragraph, index) => <> <p> {paragraph} </p> {index !== text.length -1 && text.length !== 1 ? <br /> : null } </>);
   return (
     <>
       {paragraphs}
