@@ -363,14 +363,19 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                 ref={segments["Top 10 Games in Share Your Shot"]}
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
-                  <div className="md:grid md:grid-rows-2 md:gap-y-8 mb-16 md:mb-0">
-                    <div className="h-full flex flex-col justify-end">
+                  <div className="md:grid md:grid-rows-2">
+                    <div className="h-auto flex flex-col justify-end">
                       <h2 className="md:text-6xl text-3xl font-semibold mb-8">
                         Top 10 Games in Share Your Shot
                       </h2>
                       { insertFlavourText(flavourText.top10sys) }
                     </div>
-                    <div className="aspect-video hidden md:block">
+                    <div
+                    className="flex"
+                    style={{
+                      height: isWindowARVertical ? '35vh' : '40vh',
+                    }}
+                    >
                       <Pie
                         data={gameDistPie(
                           (data.sys as IShot[]).filter(
@@ -449,7 +454,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                 className="min-h-screen flex items-center load transition-all -translate-y-10 opacity-0 duration-500 mb-8"
                 ref={segments["Top 10 Games in the Hall of Framed"]}
               >
-                <div className="grid md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
+                <div className="grid md:grid-rows-none md:grid-cols-2 gap-x-16">
                   <div className="md:flex md:flex-col md:justify-center">
                     <div className="grid grid-cols-3 grid-rows-3 gap-4" style = { imageShadowStyle } >
                       {top10hof.map((item, index) => {
@@ -498,14 +503,19 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                       })}
                     </div>
                   </div>
-                  <div className="order-first md:order-none md:grid md:grid-rows-2 md:gap-y-8">
-                    <div className="md:h-full md:flex md:flex-col md:justify-end">
+                  <div className="order-first md:order-none md:grid md:grid-rows-2">
+                    <div className="md:h-auto md:flex md:flex-col md:justify-end">
                       <h2 className="text-3xl md:text-6xl font-semibold mb-8">
                         Top 10 Games in the Hall of Framed
                       </h2>
                       { insertFlavourText(flavourText.top10hof) }
                     </div>
-                    <div className="aspect-video hidden md:block">
+                    <div
+                    className="flex"
+                    style={{
+                      height: isWindowARVertical ? '35vh' : '40vh',
+                    }}
+                    >
                       <Pie
                         data={gameDistPie(
                           (data.hof as IShot[]).filter(
@@ -532,9 +542,9 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                 className="min-h-screen flex items-center load transition-all -translate-y-10 opacity-0 duration-500 mb-16"
                 ref={segments["Most Active Day in Share Your Shot"]}
               >
-                <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
-                  <div className="grid md:grid-rows-2 gap-y-8">
-                    <div className="h-full flex flex-col justify-end">
+                <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-x-16">
+                  <div className="grid md:grid-rows-2">
+                    <div className="h-auto flex flex-col justify-end">
                       <h2 className="text-3xl md:text-6xl font-semibold mb-8">
                         Most Active Day in Share Your Shot
                       </h2>
@@ -552,7 +562,12 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                       </h3>
                       { insertFlavourText(flavourText.busysys) }
                     </div>
-                    <div className="aspect-video hidden md:block">
+                    <div
+                    className="flex"
+                    style={{
+                      height: isWindowARVertical ? '35vh' : '40vh',
+                    }}
+                    >
                       <Pie
                         data={gameDistPie(
                           calendarDataFormat(data.sys).sort(
@@ -620,10 +635,10 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                 </div>
               </div>
               <div
-                className="min-h-screen flex items-center load transition-all -translate-y-10 opacity-0 duration-500 mb-16"
+                className="min-h-screen flex items-center load transition-all -translate-y-10 opacity-0 duration-500 mb-16 md:mb-0"
                 ref={segments["Most Active Day in the Hall of Framed"]}
               >
-                <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-x-16 gap-y-16">
+                <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-x-16">
                   <div className="md:flex flex-col justify-center">
                     <div className="grid grid-cols-3 grid-rows-3 gap-4" style = { imageShadowStyle }>
                       {mostActiveHof.slice(0, 10).map((item, index) => {
@@ -672,8 +687,8 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                       })}
                     </div>
                   </div>
-                  <div className="md:grid md:grid-rows-2 md:gap-y-8 order-first md:order-none">
-                    <div className="h-full flex flex-col justify-end">
+                  <div className="md:grid md:grid-rows-2 order-first md:order-none">
+                    <div className="h-auto flex flex-col justify-end">
                       <h2 className="text-3xl md:text-6xl font-semibold mb-8">
                         The Most Active Day in the Hall of Framed
                       </h2>
@@ -691,7 +706,12 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                       </h3>
                       { insertFlavourText(flavourText.busyhof) }
                     </div>
-                    <div className="aspect-video hidden md:block">
+                    <div
+                    className="flex"
+                    style={{
+                      height: isWindowARVertical ? '35vh' : '40vh',
+                    }}
+                    >
                       <Pie
                         data={gameDistPie(
                           calendarDataFormat(data.hof).sort(

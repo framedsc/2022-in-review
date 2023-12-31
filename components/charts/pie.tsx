@@ -3,6 +3,8 @@ import React from "react";
 import randomcolor from "randomcolor";
 import { COLOURS } from "@util";
 
+const isWindowARVertical = typeof window !== "undefined" && window.innerWidth / window.innerHeight < 1;
+
 export const Pie = (
   props: Omit<PieSvgProps<DefaultRawDatum>, "width" | "height">,
 ) => {
@@ -21,7 +23,8 @@ export const Pie = (
         modifiers: [["darker", 0.2]],
       }}
       //arcLinkLabelsSkipAngle={6.5}
-      //arcLinkLabelsDiagonalLength={80}
+      arcLinkLabelsDiagonalLength={24}
+      arcLinkLabelsStraightLength={8}
       arcLinkLabel={(d) => `${d.id} (${((d.value / total) * 100).toFixed(2)}%)`}
       enableArcLabels={false}
       arcLinkLabelsTextColor="#DBDFD8" //framed-white
@@ -55,6 +58,13 @@ export const Pie = (
           spacing: 10,
         },
       ]}
+      theme={{
+        "labels": {
+          "text":{
+            "fontSize": isWindowARVertical? 8 : 12,
+          },
+        },
+      }}
       {...props}
     />
   );
