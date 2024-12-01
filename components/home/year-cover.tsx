@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, RefObject } from "react";
 import CSS from 'csstype';
 import { IShot } from "@types";
-import { covers2021, covers2022, covers2023 } from "./covers-lists";
+import { covers2021, covers2022, covers2023, covers2024 } from "./covers-lists";
 import { basePath } from '../../next.config';
 
 const getCovers = (year: number) => {
@@ -14,6 +14,9 @@ const getCovers = (year: number) => {
     } 
     case 2023: { 
       return covers2023;
+   } 
+   case 2024: { 
+    return covers2024;
    } 
     default: { 
       return [];
@@ -111,44 +114,64 @@ const creditsTextStyle: CSS.Properties = {
   //color: '#dbdfd8',
 }
 
-export function YearCover(year: number) {
+export function YearCover(year: number, firstCover: boolean = false) {
   const covers = getCovers(year);
   const [image1, setImage1] = useState<any | null>(null);
   const [image2, setImage2] = useState<any | null>(null);
-  const [switchCoverInterval, setSwitchCoverInterval] = useState<any | null>(null);
   const imageToDisplay = useRef(1);
   const renderInitialized = useRef(false);
+  const switchCoverIntervalRef = useRef<NodeJS.Timer | null>(null); // Store the interval ID
 
-  function switchImage(year: number) {
+  function switchImage() {
     if (imageToDisplay.current === 1) {
-      setImage2(covers.filter(cover => cover !== image1)[Math.floor(Math.random() * Math.floor(covers.length))]);
+      const filteredCovers = covers.filter((cover) => cover !== image1);
+      const newImage = filteredCovers[Math.floor(Math.random() * (filteredCovers.length))];
+      setImage2(newImage);
       imageToDisplay.current = 2;
-    } else if (imageToDisplay.current === 2) {
-      setImage1(covers.filter(cover => cover !== image2)[Math.floor(Math.random() * Math.floor(covers.length))]);
+    } else {
+      const filteredCovers = covers.filter((cover) => cover !== image2);
+      const newImage = filteredCovers[Math.floor(Math.random() * (filteredCovers.length))];
+      setImage1(newImage);
       imageToDisplay.current = 1;
     }
   }
 
   useEffect(() => {
-    if(!renderInitialized.current){
-      setImage1(covers[Math.floor(Math.random() * Math.floor(covers.length))]);
-      setImage2(covers.filter(cover => cover !== image1)[Math.floor(Math.random() * Math.floor(covers.length))]);
+    if (!renderInitialized.current) {
+      setImage1(covers[Math.floor(Math.random() * covers.length)]);
+      setImage2(covers[Math.floor(Math.random() * covers.length)]);
+
+      renderInitialized.current = true;
     }
+
+    const startSwitchCoverInterval = (timeInterval: number) => {
+      if (switchCoverIntervalRef.current) {
+        clearInterval(switchCoverIntervalRef.current); // Clear any existing interval
+      }
+  
+      const intervalId = setInterval(() => {
+        switchImage();
+      }, timeInterval);
+  
+      switchCoverIntervalRef.current = intervalId;
+    };
 
     const changeCoversEveryMs: number = 7500;
-    window.setTimeout(() => { switchImage(year); startSwitchCoverInterval(3 * changeCoversEveryMs); }, (year - 2020) * changeCoversEveryMs);// offset the timer on different covers.
+    const numberOfPastCovers: number = 3;
+    const delay = firstCover ? changeCoversEveryMs : (year - 2020) * changeCoversEveryMs;
+    const timeoutId = setTimeout(() => {
+      switchImage();
+      startSwitchCoverInterval((firstCover ? 1 : numberOfPastCovers) * changeCoversEveryMs);
+    }, delay);
 
-    function startSwitchCoverInterval(timeInterval: number){
-      setSwitchCoverInterval(setInterval(() => {
-        switchImage(year);
-        clearInterval(switchCoverInterval)
-      }, timeInterval));
-    }
-
-    renderInitialized.current = true;
-
-    return () => clearInterval(switchCoverInterval);
-  }, [year]);
+    return () => {
+      clearTimeout(timeoutId); // Cleanup timeout
+      if (switchCoverIntervalRef.current) {
+        clearInterval(switchCoverIntervalRef.current); // Clear the interval on cleanup
+        switchCoverIntervalRef.current = null;
+      }
+    };
+  }, [year, firstCover]);
 
   if ((imageToDisplay.current === 1 && image1 === null) || (imageToDisplay.current === 2 && image2 === null)) {
     return null;
