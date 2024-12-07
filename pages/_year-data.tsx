@@ -10,6 +10,8 @@ import {
   ErrorSection,
   LoadingSection,
 } from "@components/experience-fragments";
+import {Author, LeaderboardEntry} from "@components/year-data/guess-the-vp-leadboard";
+import Leaderboard from "@components/year-data/guess-the-vp-leadboard";
 import CSS from 'csstype';
 import { basePath } from '../next.config';
 
@@ -71,7 +73,7 @@ const insertFlavourText = (text: any[]) => {
   );
 };
 
-export default function WrapYear(year: number, flavourText: { intro: any; top10sys: any; top10hof: any; busysys: any; busyhof: any; }) {
+export default function WrapYear(year: number, flavourText: { intro: any; top10sys: any; top10hof: any; busysys: any; busyhof: any;}, guessTheVPData: any[]) {
   const getHOFUrl = (item: {gameName: any; epochTime: any; }) => {
     return `https://framedsc.com/HallOfFramed/?title=${item.gameName}&after=${year}-01-01&before=${year+1}-01-01&imageId=${item.epochTime}`
   }
@@ -115,7 +117,7 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
 
   const dataAvailable = data.hof.length > 0 && data.authors.length > 0;
 
-  const segments: {
+  var segments: {
     [key: string]: RefObject<HTMLDivElement>;
   } = {
     "Top 10 Games in Share Your Shot": useRef<HTMLDivElement>(null),
@@ -125,6 +127,10 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
     "Daily Share Your Shot": useRef<HTMLDivElement>(null),
     "Daily Hall of Framed": useRef<HTMLDivElement>(null),
   };
+
+  if (guessTheVPData.length !== 0) {
+    segments["Guess the VP yearly leadboard"] = useRef<HTMLDivElement>(null);
+  }
 
   data.hof.forEach(item => item as IShot);
   data.sys.forEach(item => item as IShot);
@@ -206,6 +212,30 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
       return { ...gameList[randIdx], ...item };
     })
     .filter((item) => !!item.thumbnailUrl);
+
+  const leaderboardData: LeaderboardEntry[] = guessTheVPData
+  .map(([authorId, score]: [string, number]) => {
+    // Find the author info by matching the authorId
+    const author: Author | undefined = data.authors.find(
+      (entry: Author) => entry.authorid === authorId
+    );
+
+    // If the author is found, extract the needed information
+    if (author) {
+      return {
+        id: authorId,
+        avatar: author.authorsAvatarUrl,
+        name: author.authorNick,
+        score,
+      };
+    }
+
+    // If the author is not found, skip this entry
+    return null;
+  })
+  .filter((entry): entry is LeaderboardEntry => entry !== null) // Type guard for non-null entries
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 10);
 
   const recapLogoStyle: CSS.Properties = {
     position: 'relative',
@@ -730,6 +760,30 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                   </div>
                 </div>
               </div>
+
+              <div
+                className="min-h-screen flex items-center load transition-all -translate-y-10 opacity-0 duration-500 mb-8"
+                ref={segments["Guess the VP yearly leadboard"]}
+                style={ {display: leaderboardData.length === 0 ? 'none' : 'block'} }
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
+                  <div className="md:grid md:grid-rows-2">
+                    <div className="h-auto flex flex-col justify-end">
+                      <h2 className="md:text-6xl text-3xl font-semibold mb-8">
+                        Guess the VP yearly leadboard
+                      </h2>
+                      { "In the internal Guess the VP game, we let" }
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <Leaderboard
+                      leaderboardData={leaderboardData}
+                      isWindowARVertical={isWindowARVertical}
+                    />
+                  </div>
+                </div>
+              </div>
+
               <div
               className="calendar h-auto grid grid-rows-2 gap-x-8 md:overflow-hidden"
               style={{
