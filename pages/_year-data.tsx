@@ -772,7 +772,9 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
                       <h2 className="md:text-6xl text-3xl font-semibold mb-8">
                         Guess the VP yearly leadboard
                       </h2>
-                      { "In the internal Guess the VP game, we let" }
+                      <p>With so many amazing shots spread out across a wide selection of games over the last few years, we decided to take the competitive nature of our members and turn it into a fun little game of Guess Who. Every member has a style, a vibe, or a signature within their work, and often we find that we’re able to spot those personal flourishes when looking at a shot. In Guess the VP, the all knowing FramedBot picks out a random shot and tasks players with identifying who posted it, awarding the successful candidate with absolutely nothing but satisfaction of being right. </p>
+                      <br />
+                      <p>For the competitive few who frequent the games, we’ve tallied up all of the points for this year and this is how it went.</p>
                     </div>
                   </div>
                   <div className="flex flex-col justify-center">

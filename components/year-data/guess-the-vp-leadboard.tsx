@@ -43,7 +43,7 @@ const Leaderboard = (props: {leaderboardData: LeaderboardEntry[], isWindowARVert
                 className="flex items-center justify-between p-4"
               >
                 <div className="flex items-center">
-                  <span className="mr-2 text-xl font-bold text-framed-white">
+                  <span className="mr-2 text-xl text-center	font-bold text-framed-white" style = { {minWidth: "30px"} }>
                     {isTopThree ? medalIcons[index] : index + 1}
                   </span>
                   <img
