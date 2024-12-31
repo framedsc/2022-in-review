@@ -71,6 +71,7 @@ const Home = () => {
     //transform: 'translate(0%, -50%%)',
     //top: '50%',
     paddingTop: "10vh",
+    paddingBottom: isPortrait ? '0px' : '50px',
   }
 
   return (
@@ -84,14 +85,15 @@ const Home = () => {
           <img src={`${basePath}/recap-wsub-logo.svg`} style={ recapLogoStyle }/>
           <div className="h-auto flex flex-col justify-end" style={ introTextStyle }>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet imperdiet tellus quis lobortis.
-              Praesent vel pulvinar sem. Vestibulum non aliquet sem. Nulla non dui at felis vestibulum dictum ut nec magna.
-              Praesent ullamcorper gravida pretium. Suspendisse felis arcu, egestas non metus at, rhoncus sollicitudin orci.
-              Proin id consectetur quam, sed dictum eros. Integer ipsum enim, dictum ut arcu eu, laoreet dapibus nunc.
-              Quisque auctor ipsum orci, a malesuada nisl maximus in. Etiam arcu nisl, interdum nec justo sit amet, elementum feugiat urna.
-              Fusce neque nulla, molestie at dui ut, ornare laoreet ante. Ut vitae justo sit amet velit ultricies elementum.
-              Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc congue lectus maximus dictum pellentesque.
-              Fusce at sapien auctor, molestie erat non, pulvinar mauris.
+            At the end of every year, we like to take a beat and look back over the indelible works of our talented community.
+            Members of the Framed Discord server have poured countless hours into games new and old,
+            stopping time to capture timeless images.
+
+            <br/><br/>
+
+            We've made sure to dive deep into the heart of virtual photography and break down our members'
+            photographing habits for each year, so join us as we reflect on what has been happening in the wonderful world of virtual photography.
+            It's been another landmark year for video games and virtual photography alike, and we're looking forward to the next one.
             </p>
           </div>
         </div>

@@ -56,7 +56,7 @@ const Leaderboard = (props: {leaderboardData: LeaderboardEntry[], isWindowARVert
                   />
                   <span className="text-framed-white font-semibold">{entry.name}</span>
                 </div>
-                <span className="text-framed-white font-semibold">{entry.score}</span>
+                <span className="text-framed-white font-semibold" style = { {marginRight: "10px"} }>{entry.score}</span>
               </a>
             </li>
           );
