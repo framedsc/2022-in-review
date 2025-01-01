@@ -34,7 +34,7 @@ const flavourText = {
 }
 
 const Home = () => {
-  return WrapYear(year, flavourText);
+  return WrapYear(year, flavourText, []);
 };
 
 export default Home;

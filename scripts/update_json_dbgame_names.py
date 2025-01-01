@@ -1,25 +1,20 @@
-
-import os
-from tinydb import TinyDB, Query, where
-import urllib.parse as upar
+from tinydb import TinyDB, where
 from tqdm import tqdm
 
 def main(names_dict):
     print("Updating the json DB file with backblaze links.")
 
     db = TinyDB('sysdb.json', indent=2)
-
-    sys_list = []
+    entries = db.all()
     
-    for entry in tqdm(list(db)):
+    for entry in tqdm(entries):
         old_game_name = entry['gameName']
         new_game_name = names_dict.get(old_game_name, None)
         if new_game_name:
             entry["gameName"] = new_game_name
-            db.update(entry, Query().message_id == entry["message_id"])
-            # sys_list.append(entry)
 
-    # db.update_multiple([(entry, where('message_id') == entry["message_id"]) for entry in sys_list])
+    db.truncate()  # Clears all data
+    db.insert_multiple(entries)  # Inserts modified records in bulk
     
 
 games_names_dict = { "2077": "CyberPunk 2077",
