@@ -42,7 +42,7 @@ export const Navigation = () => {
             </Link>
           </li>
           <Link href="/" >
-            <img src={`${basePath}/recap-nsub-logo.svg`} style={ recapLogoStyle }/>
+            <img src={`${basePath}/recap-nsub-logo.svg`} style={ recapLogoStyle } alt="recap logo"/>
           </Link>
         </ul>
       </div>

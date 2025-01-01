@@ -82,7 +82,7 @@ const Home = () => {
 
       <div className='Intro Section wrapper' style={ firstCoverFrameStyle }>
         <div className='test' style={ leftIntroStyle }>
-          <img src={`${basePath}/recap-wsub-logo.svg`} style={ recapLogoStyle }/>
+          <img src={`${basePath}/recap-wsub-logo.svg`} style={ recapLogoStyle } alt="recap logo"/>
           <div className="h-auto flex flex-col justify-end" style={ introTextStyle }>
             <p>
             At the end of every year, we like to take a beat and look back over the indelible works of our talented community.
@@ -91,9 +91,9 @@ const Home = () => {
 
             <br/><br/>
 
-            We've made sure to dive deep into the heart of virtual photography and break down our members'
+            We&apos;ve made sure to dive deep into the heart of virtual photography and break down our members&apos;
             photographing habits for each year, so join us as we reflect on what has been happening in the wonderful world of virtual photography.
-            It's been another landmark year for video games and virtual photography alike, and we're looking forward to the next one.
+            It&apos;s been another landmark year for video games and virtual photography alike, and we&apos;re looking forward to the next one.
             </p>
           </div>
         </div>
