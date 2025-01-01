@@ -1,13 +1,13 @@
 import React from "react";
 
-interface Author {
+export interface Author {
   authorid: string;
   authorNick: string;
   authorsAvatarUrl: string;
   socials: string[];
 }
 
-interface LeaderboardEntry {
+export interface LeaderboardEntry {
   id: string;
   avatar: string;
   name: string;
@@ -73,4 +73,3 @@ const Leaderboard = (props: {leaderboardData: LeaderboardEntry[], isWindowARVert
 };
 
 export default Leaderboard;
-export type {Author, LeaderboardEntry}

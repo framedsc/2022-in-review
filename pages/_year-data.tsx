@@ -10,7 +10,7 @@ import {
   ErrorSection,
   LoadingSection,
 } from "@components/experience-fragments";
-import {Author, LeaderboardEntry} from "@components/year-data/guess-the-vp-leadboard";
+import { LeaderboardEntry } from "@components/year-data/guess-the-vp-leadboard";
 import Leaderboard from "@components/year-data/guess-the-vp-leadboard";
 import CSS from 'csstype';
 import { basePath } from '../next.config';
@@ -213,8 +213,9 @@ export default function WrapYear(year: number, flavourText: { intro: any; top10s
   const leaderboardData: LeaderboardEntry[] = guessTheVPData
   .map(([authorId, score]: [string, number]) => {
     // Find the author info by matching the authorId
-    const author: Author | undefined = data.authors.find(
-      (entry: Author) => entry.authorid === authorId
+    // TODO: Use the Author type here
+    const author: any | undefined = data.authors.find(
+      (entry: any) => entry.authorid === authorId
     );
 
     // If the author is found, extract the needed information
