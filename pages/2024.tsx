@@ -15,7 +15,7 @@ const flavourText = {
     let’s get into finer details for 2024.`
 ],
   top10sys: [`2024 saw Cyberpunk 2077 continue strong as the most posted title in Share Your Shot
-    with a whopping 10% of all shots posted being bathed in Night Ctiy’s neon lights.
+    with a whopping 10% of all shots posted being bathed in Night City’s neon lights.
     Elden Ring also saw a strong return this year at 5% of all shots, no doubt helped by
     the stunning new vistas of the Shadow of the Erdtree DLC bringing people back to
     the game for another run. The newest contender to the mix, Dragon Age: The Veilguard managed to
